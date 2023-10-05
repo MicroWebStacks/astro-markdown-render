@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Markdown from '../components/Markdown.astro';
+
+const readme = `
+# hello markdown
+**style** text
+## heading 2
+more text
+
+vals = **666**
+
+it is also possible to render custom components in the Markdown
+
+| Column 1 | Column 2 |
+|----------|----------|
+| Row 1    | Row 1    |
+| Row 2    | Row 2    |
+
+`
+
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<h1>Astro remote <span class="text-gradient">MDAST</span></h1>
+		<p>remote markdown using Markdown Abstract Syntax Tree</p>
+		<div class="instructions">
+			<Markdown content={readme}/>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1.5rem;
+		max-width: 60ch;
+	}
+	h1 {
+		font-size: 3rem;
+		font-weight: 800;
+		margin: 0;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+	.instructions {
+		line-height: 1.6;
+		margin: 1rem 0;
+		border: 1px solid rgba(var(--accent), 25%);
+		background-color: white;
+		padding: 1rem;
+		border-radius: 0.4rem;
+	}
+</style>
