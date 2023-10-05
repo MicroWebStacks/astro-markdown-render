@@ -1,10 +1,19 @@
 ---
 import { marked } from 'marked';
+import {fromMarkdown} from 'mdast-util-from-markdown'
+import {promises as fs} from 'fs';
+
 export interface Props {
 	content: string;
 }
 
 const { content } = Astro.props;
+
+
+const tree = fromMarkdown(content)
+console.log(tree)
+
+await fs.writeFile("./content/test.json",JSON.stringify(tree,null,4))
 
 const html_content = marked(content)
 
