@@ -1,7 +1,8 @@
 ---
 import { marked } from 'marked';
-import {fromMarkdown} from 'mdast-util-from-markdown'
+import {md_tree, extract_tables, extract_paragraphs_text} from './extract'
 import {promises as fs} from 'fs';
+import Render from './Render.astro';
 
 export interface Props {
 	content: string;
@@ -9,13 +10,20 @@ export interface Props {
 
 const { content } = Astro.props;
 
-
-const tree = fromMarkdown(content)
-console.log(tree)
-
+const tree = md_tree(content)
 await fs.writeFile("./content/test.json",JSON.stringify(tree,null,4))
+
+const tables = extract_tables(tree)
+await fs.writeFile("./content/tables.json",JSON.stringify(tables,null,4))
+
+const paragraphs = extract_paragraphs_text(tree)
+await fs.writeFile("./content/paragraphs.json",JSON.stringify(paragraphs,null,4))
 
 const html_content = marked(content)
 
 ---
 <div set:html={html_content}></div>
+
+<hr>
+
+<Render node={tree} />

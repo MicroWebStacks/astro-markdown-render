@@ -1,0 +1,22 @@
+---
+export interface Props {
+    node: Object;
+}
+
+const {node} = Astro.props;
+---
+{(node.type == "root") &&
+    node.children.map((node)=>(
+        <Astro.self node={node} />
+    ))
+}
+{(node.type == "paragraph") &&
+<p>
+    {node.children.map((node)=>(
+        <Astro.self node={node} />
+    ))}
+</p>
+}
+{(node.type == "text") &&
+    node.value
+}

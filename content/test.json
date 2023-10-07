@@ -48,12 +48,12 @@
                                 "start": {
                                     "line": 2,
                                     "column": 3,
-                                    "offset": 20
+                                    "offset": 19
                                 },
                                 "end": {
                                     "line": 2,
                                     "column": 8,
-                                    "offset": 25
+                                    "offset": 24
                                 }
                             }
                         }
@@ -62,12 +62,12 @@
                         "start": {
                             "line": 2,
                             "column": 1,
-                            "offset": 18
+                            "offset": 17
                         },
                         "end": {
                             "line": 2,
                             "column": 10,
-                            "offset": 27
+                            "offset": 26
                         }
                     }
                 },
@@ -78,12 +78,12 @@
                         "start": {
                             "line": 2,
                             "column": 10,
-                            "offset": 27
+                            "offset": 26
                         },
                         "end": {
                             "line": 2,
                             "column": 15,
-                            "offset": 32
+                            "offset": 31
                         }
                     }
                 }
@@ -92,12 +92,45 @@
                 "start": {
                     "line": 2,
                     "column": 1,
-                    "offset": 18
+                    "offset": 17
                 },
                 "end": {
                     "line": 2,
                     "column": 15,
-                    "offset": 32
+                    "offset": 31
+                }
+            }
+        },
+        {
+            "type": "paragraph",
+            "children": [
+                {
+                    "type": "inlineCode",
+                    "value": "special text",
+                    "position": {
+                        "start": {
+                            "line": 4,
+                            "column": 1,
+                            "offset": 33
+                        },
+                        "end": {
+                            "line": 4,
+                            "column": 15,
+                            "offset": 47
+                        }
+                    }
+                }
+            ],
+            "position": {
+                "start": {
+                    "line": 4,
+                    "column": 1,
+                    "offset": 33
+                },
+                "end": {
+                    "line": 4,
+                    "column": 15,
+                    "offset": 47
                 }
             }
         },
@@ -110,28 +143,28 @@
                     "value": "heading 2",
                     "position": {
                         "start": {
-                            "line": 3,
+                            "line": 6,
                             "column": 4,
-                            "offset": 37
+                            "offset": 52
                         },
                         "end": {
-                            "line": 3,
+                            "line": 6,
                             "column": 13,
-                            "offset": 46
+                            "offset": 61
                         }
                     }
                 }
             ],
             "position": {
                 "start": {
-                    "line": 3,
+                    "line": 6,
                     "column": 1,
-                    "offset": 34
+                    "offset": 49
                 },
                 "end": {
-                    "line": 3,
+                    "line": 6,
                     "column": 13,
-                    "offset": 46
+                    "offset": 61
                 }
             }
         },
@@ -143,28 +176,28 @@
                     "value": "more text",
                     "position": {
                         "start": {
-                            "line": 4,
+                            "line": 7,
                             "column": 1,
-                            "offset": 48
+                            "offset": 62
                         },
                         "end": {
-                            "line": 4,
+                            "line": 7,
                             "column": 10,
-                            "offset": 57
+                            "offset": 71
                         }
                     }
                 }
             ],
             "position": {
                 "start": {
-                    "line": 4,
+                    "line": 7,
                     "column": 1,
-                    "offset": 48
+                    "offset": 62
                 },
                 "end": {
-                    "line": 4,
+                    "line": 7,
                     "column": 10,
-                    "offset": 57
+                    "offset": 71
                 }
             }
         },
@@ -176,14 +209,14 @@
                     "value": "vals = ",
                     "position": {
                         "start": {
-                            "line": 6,
+                            "line": 9,
                             "column": 1,
-                            "offset": 61
+                            "offset": 73
                         },
                         "end": {
-                            "line": 6,
+                            "line": 9,
                             "column": 8,
-                            "offset": 68
+                            "offset": 80
                         }
                     }
                 },
@@ -195,42 +228,42 @@
                             "value": "666",
                             "position": {
                                 "start": {
-                                    "line": 6,
+                                    "line": 9,
                                     "column": 10,
-                                    "offset": 70
+                                    "offset": 82
                                 },
                                 "end": {
-                                    "line": 6,
+                                    "line": 9,
                                     "column": 13,
-                                    "offset": 73
+                                    "offset": 85
                                 }
                             }
                         }
                     ],
                     "position": {
                         "start": {
-                            "line": 6,
+                            "line": 9,
                             "column": 8,
-                            "offset": 68
+                            "offset": 80
                         },
                         "end": {
-                            "line": 6,
+                            "line": 9,
                             "column": 15,
-                            "offset": 75
+                            "offset": 87
                         }
                     }
                 }
             ],
             "position": {
                 "start": {
-                    "line": 6,
+                    "line": 9,
                     "column": 1,
-                    "offset": 61
+                    "offset": 73
                 },
                 "end": {
-                    "line": 6,
+                    "line": 9,
                     "column": 15,
-                    "offset": 75
+                    "offset": 87
                 }
             }
         },
@@ -242,61 +275,350 @@
                     "value": "it is also possible to render custom components in the Markdown",
                     "position": {
                         "start": {
-                            "line": 8,
+                            "line": 11,
                             "column": 1,
-                            "offset": 79
+                            "offset": 89
                         },
                         "end": {
-                            "line": 8,
+                            "line": 11,
                             "column": 64,
-                            "offset": 142
+                            "offset": 152
                         }
                     }
                 }
             ],
             "position": {
                 "start": {
-                    "line": 8,
+                    "line": 11,
                     "column": 1,
-                    "offset": 79
+                    "offset": 89
                 },
                 "end": {
-                    "line": 8,
+                    "line": 11,
                     "column": 64,
-                    "offset": 142
+                    "offset": 152
                 }
             }
         },
         {
-            "type": "paragraph",
+            "type": "table",
+            "align": [
+                null,
+                null
+            ],
             "children": [
                 {
-                    "type": "text",
-                    "value": "| Column 1 | Column 2 |\r\n|----------|----------|\r\n| Row 1    | Row 1    |\r\n| Row 2    | Row 2    |",
+                    "type": "tableRow",
+                    "children": [
+                        {
+                            "type": "tableCell",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "value": "Column 1",
+                                    "position": {
+                                        "start": {
+                                            "line": 13,
+                                            "column": 3,
+                                            "offset": 156
+                                        },
+                                        "end": {
+                                            "line": 13,
+                                            "column": 11,
+                                            "offset": 164
+                                        }
+                                    }
+                                }
+                            ],
+                            "position": {
+                                "start": {
+                                    "line": 13,
+                                    "column": 1,
+                                    "offset": 154
+                                },
+                                "end": {
+                                    "line": 13,
+                                    "column": 12,
+                                    "offset": 165
+                                }
+                            }
+                        },
+                        {
+                            "type": "tableCell",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "value": "Column 2",
+                                    "position": {
+                                        "start": {
+                                            "line": 13,
+                                            "column": 14,
+                                            "offset": 167
+                                        },
+                                        "end": {
+                                            "line": 13,
+                                            "column": 22,
+                                            "offset": 175
+                                        }
+                                    }
+                                }
+                            ],
+                            "position": {
+                                "start": {
+                                    "line": 13,
+                                    "column": 12,
+                                    "offset": 165
+                                },
+                                "end": {
+                                    "line": 13,
+                                    "column": 24,
+                                    "offset": 177
+                                }
+                            }
+                        }
+                    ],
                     "position": {
                         "start": {
-                            "line": 10,
+                            "line": 13,
                             "column": 1,
-                            "offset": 146
+                            "offset": 154
                         },
                         "end": {
                             "line": 13,
                             "column": 24,
-                            "offset": 244
+                            "offset": 177
+                        }
+                    }
+                },
+                {
+                    "type": "tableRow",
+                    "children": [
+                        {
+                            "type": "tableCell",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "value": "Row 1",
+                                    "position": {
+                                        "start": {
+                                            "line": 15,
+                                            "column": 3,
+                                            "offset": 204
+                                        },
+                                        "end": {
+                                            "line": 15,
+                                            "column": 8,
+                                            "offset": 209
+                                        }
+                                    }
+                                }
+                            ],
+                            "position": {
+                                "start": {
+                                    "line": 15,
+                                    "column": 1,
+                                    "offset": 202
+                                },
+                                "end": {
+                                    "line": 15,
+                                    "column": 12,
+                                    "offset": 213
+                                }
+                            }
+                        },
+                        {
+                            "type": "tableCell",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "value": "Row 1 c2",
+                                    "position": {
+                                        "start": {
+                                            "line": 15,
+                                            "column": 14,
+                                            "offset": 215
+                                        },
+                                        "end": {
+                                            "line": 15,
+                                            "column": 22,
+                                            "offset": 223
+                                        }
+                                    }
+                                }
+                            ],
+                            "position": {
+                                "start": {
+                                    "line": 15,
+                                    "column": 12,
+                                    "offset": 213
+                                },
+                                "end": {
+                                    "line": 15,
+                                    "column": 27,
+                                    "offset": 228
+                                }
+                            }
+                        }
+                    ],
+                    "position": {
+                        "start": {
+                            "line": 15,
+                            "column": 1,
+                            "offset": 202
+                        },
+                        "end": {
+                            "line": 15,
+                            "column": 27,
+                            "offset": 228
+                        }
+                    }
+                },
+                {
+                    "type": "tableRow",
+                    "children": [
+                        {
+                            "type": "tableCell",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "value": "Row 2",
+                                    "position": {
+                                        "start": {
+                                            "line": 16,
+                                            "column": 3,
+                                            "offset": 231
+                                        },
+                                        "end": {
+                                            "line": 16,
+                                            "column": 8,
+                                            "offset": 236
+                                        }
+                                    }
+                                }
+                            ],
+                            "position": {
+                                "start": {
+                                    "line": 16,
+                                    "column": 1,
+                                    "offset": 229
+                                },
+                                "end": {
+                                    "line": 16,
+                                    "column": 12,
+                                    "offset": 240
+                                }
+                            }
+                        },
+                        {
+                            "type": "tableCell",
+                            "children": [
+                                {
+                                    "type": "text",
+                                    "value": "Row 2 c2",
+                                    "position": {
+                                        "start": {
+                                            "line": 16,
+                                            "column": 14,
+                                            "offset": 242
+                                        },
+                                        "end": {
+                                            "line": 16,
+                                            "column": 22,
+                                            "offset": 250
+                                        }
+                                    }
+                                }
+                            ],
+                            "position": {
+                                "start": {
+                                    "line": 16,
+                                    "column": 12,
+                                    "offset": 240
+                                },
+                                "end": {
+                                    "line": 16,
+                                    "column": 26,
+                                    "offset": 254
+                                }
+                            }
+                        }
+                    ],
+                    "position": {
+                        "start": {
+                            "line": 16,
+                            "column": 1,
+                            "offset": 229
+                        },
+                        "end": {
+                            "line": 16,
+                            "column": 26,
+                            "offset": 254
                         }
                     }
                 }
             ],
             "position": {
                 "start": {
-                    "line": 10,
+                    "line": 13,
                     "column": 1,
-                    "offset": 146
+                    "offset": 154
                 },
                 "end": {
-                    "line": 13,
-                    "column": 24,
-                    "offset": 244
+                    "line": 16,
+                    "column": 26,
+                    "offset": 254
+                }
+            }
+        },
+        {
+            "type": "heading",
+            "depth": 1,
+            "children": [
+                {
+                    "type": "text",
+                    "value": "Code section",
+                    "position": {
+                        "start": {
+                            "line": 18,
+                            "column": 3,
+                            "offset": 258
+                        },
+                        "end": {
+                            "line": 18,
+                            "column": 15,
+                            "offset": 270
+                        }
+                    }
+                }
+            ],
+            "position": {
+                "start": {
+                    "line": 18,
+                    "column": 1,
+                    "offset": 256
+                },
+                "end": {
+                    "line": 18,
+                    "column": 15,
+                    "offset": 270
+                }
+            }
+        },
+        {
+            "type": "code",
+            "lang": "js",
+            "meta": null,
+            "value": "const mod = \"value\"",
+            "position": {
+                "start": {
+                    "line": 19,
+                    "column": 1,
+                    "offset": 271
+                },
+                "end": {
+                    "line": 21,
+                    "column": 4,
+                    "offset": 300
                 }
             }
         }
@@ -308,9 +630,9 @@
             "offset": 0
         },
         "end": {
-            "line": 13,
-            "column": 24,
-            "offset": 244
+            "line": 22,
+            "column": 1,
+            "offset": 301
         }
     }
 }

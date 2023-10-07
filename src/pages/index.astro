@@ -8,7 +8,7 @@ const readme = await fs.readFile("./content/test.md",'utf-8')
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<h1>Astro remote <span class="text-gradient">MDAST</span></h1>
+		<h1>Astro remote <span class="text-gradient">REMARK</span></h1>
 		<p>remote markdown using Markdown Abstract Syntax Tree</p>
 		<div class="instructions">
 			<Markdown content={readme}/>
@@ -20,7 +20,7 @@ const readme = await fs.readFile("./content/test.md",'utf-8')
 	main {
 		margin: auto;
 		padding: 1.5rem;
-		max-width: 60ch;
+		max-width: 65ch;
 	}
 	h1 {
 		font-size: 3rem;
