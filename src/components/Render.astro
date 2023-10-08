@@ -4,6 +4,7 @@ export interface Props {
 }
 
 const {node} = Astro.props;
+const other_type = !["root","paragraph","text"].includes(node.type)
 ---
 {(node.type == "root") &&
     node.children.map((node)=>(
@@ -19,4 +20,7 @@ const {node} = Astro.props;
 }
 {(node.type == "text") &&
     node.value
+}
+{other_type &&
+    <div>'{node.type}'</div>
 }

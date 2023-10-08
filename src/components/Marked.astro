@@ -1,0 +1,12 @@
+---
+import { marked } from 'marked';
+
+export interface Props {
+	content: string;
+}
+
+const { content } = Astro.props;
+const html_content = marked(content)
+
+---
+<div set:html={html_content}></div>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Markdown from '../components/Markdown.astro';
+import Markdown from '../components/Marked.astro';
+import AstroMarkdown from '../components/AstroMarkdown.astro'
 import {promises as fs} from 'fs';
 
 const readme = await fs.readFile("./content/test.md",'utf-8')
@@ -12,6 +13,9 @@ const readme = await fs.readFile("./content/test.md",'utf-8')
 		<p>remote markdown using Markdown Abstract Syntax Tree</p>
 		<div class="instructions">
 			<Markdown content={readme}/>
+		</div>
+		<div class="instructions">
+			<AstroMarkdown content={readme}/>
 		</div>
 	</main>
 </Layout>

@@ -1,5 +1,4 @@
 ---
-import { marked } from 'marked';
 import {md_tree, extract_tables, extract_paragraphs_text} from './extract'
 import {promises as fs} from 'fs';
 import Render from './Render.astro';
@@ -18,12 +17,5 @@ await fs.writeFile("./content/tables.json",JSON.stringify(tables,null,4))
 
 const paragraphs = extract_paragraphs_text(tree)
 await fs.writeFile("./content/paragraphs.json",JSON.stringify(paragraphs,null,4))
-
-const html_content = marked(content)
-
 ---
-<div set:html={html_content}></div>
-
-<hr>
-
 <Render node={tree} />
