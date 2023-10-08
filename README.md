@@ -9,7 +9,7 @@ render remote markdown content using Astro components with the help of remark md
 
 * Enhance Markdown with Astro components
 
-Such features already exist for react components (react-markdown) but not for the Astro components.
+Such features already exist for react components (react-markdown) but not for the Astro components or at least not in combination with other required features (remote, remark AST,...).
 
 * Remote markdown
 
