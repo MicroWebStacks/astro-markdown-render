@@ -13,7 +13,7 @@ Such features already exist for react components (react-markdown) but not for th
 
 * Remote markdown
 
-Astro allow already a similar use case with MDX and also for local files, not for remote markdown. Although remote markdown a more relevant for SSR, even in SSG it offer more flexibility when fetching content from a CMS or using a flexible path in the file system.
+Astro allow already a similar use case with MDX and also for local files, not for remote markdown. Although remote markdown is more relevant for SSR, even in SSG it offer more flexibility when fetching content from a CMS or using a flexible path in the file system.
 
 * Remark AST
 
