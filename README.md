@@ -21,7 +21,7 @@ The remark AST is the safest way to parse Markdown which keeps closest compatibi
 
 * No custom components
 
-Given the required purity of Markdown content, it is not intended to introduce custom components inside the .md files e.g. (# Heading with <MyComponent/>). It is nevertheless possible to use custom components with existing AST types, e.g. replace images, tables, code,... this ensures content compatibility and prevents needs for new flavors.
+Given the required purity of Markdown content, it is not intended to introduce custom components inside the .md files e.g. (`# Heading with <MyComponent/>`). It is nevertheless possible to use custom components with existing AST types, e.g. replace images, tables, code,... this ensures content compatibility and prevents needs for new flavors.
 
 * custom components through standard Markdown API
 
