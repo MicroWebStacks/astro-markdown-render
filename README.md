@@ -42,7 +42,7 @@ Some content generation providers e.g. Mermaid, Plantuml allow already custom im
 
 reasons for not using Astro remote :
 * the JSX runtime renderer inherits deviations from the Markdown standard and can throw errors that would otherwise be supported or tolerated by Markdown
-* Ultrahtml components enhancement not needed : given that Astro-Remark only intends to use standard remark AST types, all parsing is offloaded to the same parser which takes out the risk of deviation in content interpretation.
+* Ultrahtml components enhancement not needed : given that Astro-Remark only intends to use standard remark AST types, all parsing is offloaded to the same parser which takes out the risk of deviation in content interpretation (e.g. some open issues related to space parsing,...).
 
 
 ## React Markdown
