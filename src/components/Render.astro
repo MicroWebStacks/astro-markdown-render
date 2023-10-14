@@ -1,20 +1,29 @@
 ---
 import Heading from './Heading.astro';
 import Table from './Table.astro'
+import Image from './Image.astro'
 import {toHast} from 'mdast-util-to-hast'
 import {toHtml} from 'hast-util-to-html'
 export interface Props {
     node: Object;
+    path:string;
 }
 
-const {node} = Astro.props;
-const handled_types = ["root","heading","table","paragraph"]
+const {node, path} = Astro.props;
+const handled_types = ["root","heading","table","paragraph","image"]
 const other_type = !handled_types.includes(node.type)
 ---
 {(node.type == "root") &&
     node.children.map((node)=>(
-        <Astro.self node={node} />
+        <Astro.self node={node} path={path} />
     ))
+}
+{(node.type == "paragraph") &&
+<p>
+    {node.children.map((node)=>(
+        <Astro.self node={node} path={path}/>
+    ))}
+</p>
 }
 {(node.type == "heading") &&
     <Heading node={node} />
@@ -22,12 +31,8 @@ const other_type = !handled_types.includes(node.type)
 {(node.type == "table") &&
     <Table node={node} />
 }
-{(node.type == "paragraph") &&
-<p>
-    {node.children.map((node)=>(
-        <Astro.self node={node} />
-    ))}
-</p>
+{(node.type == "image") &&
+    <Image node={node}  path={path}/>
 }
 {other_type &&
     <Fragment set:html={toHtml(toHast(node))}></Fragment>

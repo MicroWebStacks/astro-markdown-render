@@ -34,7 +34,7 @@ function extract_paragraphs_text(node){
         if (node.type === 'heading') {
             current_heading_slug = node_slug(node);
         } else if (node.type === 'paragraph') {
-            console.log(`Paragraph in Heading: ${current_heading_slug}`);
+            //console.log(`Paragraph in Heading: ${current_heading_slug}`);
             paragraphs_list.push({
                 heading: current_heading_slug,
                 text:extractText(node)
