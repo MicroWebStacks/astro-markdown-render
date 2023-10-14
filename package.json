@@ -11,13 +11,16 @@
     "astro": "astro"
   },
   "dependencies": {
+    "hast-util-to-html": "^9.0.0",
     "marked": "^9.1.0",
     "mdast-util-from-markdown": "^2.0.0",
     "mdast-util-gfm-table": "^2.0.0",
+    "mdast-util-to-hast": "^13.0.2",
     "micromark-extension-gfm-table": "^2.0.0",
     "remark": "^15.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.0.0",
+    "slugify": "^1.6.6",
     "unified": "^11.0.3"
   },
   "devDependencies": {

@@ -10,12 +10,12 @@ export interface Props {
 const { content } = Astro.props;
 
 const tree = md_tree(content)
-await fs.writeFile("./content/test.json",JSON.stringify(tree,null,4))
+await fs.writeFile("./debug/tree.json",JSON.stringify(tree,null,4))
 
 const tables = extract_tables(tree)
-await fs.writeFile("./content/tables.json",JSON.stringify(tables,null,4))
+await fs.writeFile("./debug/tables.json",JSON.stringify(tables,null,4))
 
 const paragraphs = extract_paragraphs_text(tree)
-await fs.writeFile("./content/paragraphs.json",JSON.stringify(paragraphs,null,4))
+await fs.writeFile("./debug/paragraphs.json",JSON.stringify(paragraphs,null,4))
 ---
 <Render node={tree} />

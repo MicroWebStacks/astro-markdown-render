@@ -1,34 +1,18 @@
 import {fromMarkdown} from 'mdast-util-from-markdown'
 import {gfmTable} from 'micromark-extension-gfm-table'
 import {gfmTableFromMarkdown} from 'mdast-util-gfm-table'
-
-function extractText(node){
-    const text_list = [];
-    
-    function traverse(node) {
-        if(node.type == "text"){
-            text_list.push(node.value)
-        }
-        if (node.children) {
-            for (const child of node.children) {
-                traverse(child);
-            }
-        }
-    }
-    traverse(node)
-    return text_list;
-}
+import {extractText, node_slug} from '../libs/utils'
 
 function extract_tables(node){
-    let current_heading = ""
+    let current_heading_slug = ""
     let tables_list = []
     function recursive_tables(node) {
         if (node.type === 'heading') {
-            current_heading = node.children[0].value;
+            current_heading_slug = node_slug(node);
         } else if (node.type === 'table') {
-            console.log(`Table in Heading: ${current_heading}`);
+            console.log(`Table in Heading: ${current_heading_slug}`);
             tables_list.push({
-                heading: current_heading,
+                heading: current_heading_slug,
                 cells:extractText(node)
             })
         }
@@ -44,15 +28,15 @@ function extract_tables(node){
 }
 
 function extract_paragraphs_text(node){
-    let current_heading = ""
+    let current_heading_slug = ""
     let paragraphs_list = []
     function recursive_tables(node) {
         if (node.type === 'heading') {
-            current_heading = node.children[0].value;
+            current_heading_slug = node_slug(node);
         } else if (node.type === 'paragraph') {
-            console.log(`Paragraph in Heading: ${current_heading}`);
+            console.log(`Paragraph in Heading: ${current_heading_slug}`);
             paragraphs_list.push({
-                heading: current_heading,
+                heading: current_heading_slug,
                 text:extractText(node)
             })
         }

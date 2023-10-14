@@ -2,6 +2,8 @@
 dist/
 .output/
 
+debug
+
 # dependencies
 node_modules/
 

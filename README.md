@@ -49,3 +49,7 @@ reasons for not using Astro remote :
 mentioned just for reference not relevant as solution but similarities in e.g. the APIs are to be considered
 
 * React markdown : https://github.com/remarkjs/react-markdown
+
+## Other projects
+* https://github.com/jonschlinkert/remarkable
+* https://github.com/jonschlinkert/markdown-toc
