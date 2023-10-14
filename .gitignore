@@ -2,6 +2,7 @@
 dist/
 .output/
 
+public
 debug
 
 # dependencies
