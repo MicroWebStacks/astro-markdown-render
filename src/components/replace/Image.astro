@@ -1,5 +1,6 @@
 ---
 import {relAssetToUrl} from '../../libs/utils'
+import Panzoom from './panzoom/panzoom.astro'
 
 export interface Props {
     node: object;
@@ -14,4 +15,4 @@ const asseturl = relAssetToUrl(url, path)
 const isSvg = asseturl.endsWith(".svg")
 const isImg = !isSvg
 ---
-<img src={asseturl} alt={alt} title={title} />
+<Panzoom src={asseturl} alt={alt} title={title} />
