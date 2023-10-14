@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Markdown from '../components/Marked.astro';
+import AstroMarkdown from '../components/AstroMarkdown.astro'
+import pages from '../../pages.json'
+import {promises as fs} from 'fs';
+
+const {slug} = Astro.params;
+const content = await fs.readFile(`./content/${slug}/readme.md`,'utf-8')
+
+export async function getStaticPaths(){
+    return pages.map((entry)=>({params:{slug:entry.slug}}))
+}
+
+---
+<Layout title={slug}>
+	<a href="/">Home</a>
+	<div class="instructions">
+		<Markdown content={content} />
+	</div>
+	<div class="instructions">
+		<AstroMarkdown content={content} />
+	</div>
+</Layout>
+
+<style>
+	.instructions {
+		line-height: 1.6;
+		margin: 1rem 0;
+		border: 1px solid rgba(var(--accent), 25%);
+		background-color: white;
+		padding: 1rem;
+		border-radius: 0.4rem;
+	}
+</style>

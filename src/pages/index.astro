@@ -1,22 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Markdown from '../components/Marked.astro';
-import AstroMarkdown from '../components/AstroMarkdown.astro'
-import {promises as fs} from 'fs';
+import pages from '../../pages.json'
 
-const readme = await fs.readFile("./content/test.md",'utf-8')
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
 		<h1>Astro remote <span class="text-gradient">REMARK</span></h1>
-		<p>remote markdown using Markdown Abstract Syntax Tree</p>
 		<div class="instructions">
-			<Markdown content={readme}/>
+			<p>remote markdown using Markdown Abstract Syntax Tree</p>
 		</div>
-		<div class="instructions">
-			<AstroMarkdown content={readme}/>
-		</div>
+		<ul>
+			{pages.map((page)=>(
+				<li>
+					<a href={page.slug}>{page.title}</a>
+				</li>
+			))}
+		</ul>
 	</main>
 </Layout>
 
