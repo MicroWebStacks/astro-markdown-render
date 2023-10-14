@@ -7,8 +7,11 @@ import pages from '../../pages.json'
 <Layout title="Welcome to Astro.">
 	<main>
 		<h1>Astro remote <span class="text-gradient">REMARK</span></h1>
+		<div class="link">
+			<a href="https://github.com/MicroWebStacks/astro-remark" target="_blank">open 'astro-remark' project in github</a>
+		</div>
 		<div class="instructions">
-			<p>remote markdown using Markdown Abstract Syntax Tree</p>
+			<p>remote markdown using Remark Abstract Syntax Tree</p>
 		</div>
 		<ul>
 			{pages.map((page)=>(
@@ -21,6 +24,11 @@ import pages from '../../pages.json'
 </Layout>
 
 <style>
+	.link{
+		margin: 20px;
+		width: 100%;
+		text-align: center;
+	}
 	main {
 		margin: auto;
 		padding: 1.5rem;
