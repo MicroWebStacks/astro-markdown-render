@@ -1,6 +1,7 @@
 ---
 import {md_tree, extract_tables, extract_paragraphs_text} from './extract'
 import {promises as fs} from 'fs';
+import {mkdirSync,existsSync} from 'fs'
 import Render from './Render.astro';
 
 export interface Props {
@@ -8,6 +9,10 @@ export interface Props {
 }
 
 const { content } = Astro.props;
+
+if(!existsSync("./debug")){
+    mkdirSync("./debug")
+  }
 
 const tree = md_tree(content)
 await fs.writeFile("./debug/tree.json",JSON.stringify(tree,null,4))
