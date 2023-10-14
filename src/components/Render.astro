@@ -1,14 +1,15 @@
 ---
 import Heading from './Heading.astro';
+import Table from './Table.astro'
 import {toHast} from 'mdast-util-to-hast'
 import {toHtml} from 'hast-util-to-html'
-import {node_slug} from '../libs/utils'
 export interface Props {
     node: Object;
 }
 
 const {node} = Astro.props;
-const other_type = !["root","paragraph","text","heading"].includes(node.type)
+const handled_types = ["root","heading","table","paragraph"]
+const other_type = !handled_types.includes(node.type)
 ---
 {(node.type == "root") &&
     node.children.map((node)=>(
@@ -16,11 +17,10 @@ const other_type = !["root","paragraph","text","heading"].includes(node.type)
     ))
 }
 {(node.type == "heading") &&
-<Heading id={node_slug(node)} tag={`h${node.depth}`}>
-    {node.children.map((node)=>(
-        <Fragment set:html={toHtml(toHast(node))}></Fragment>
-    ))}
-</Heading>
+    <Heading node={node} />
+}
+{(node.type == "table") &&
+    <Table node={node} />
 }
 {(node.type == "paragraph") &&
 <p>
@@ -28,9 +28,6 @@ const other_type = !["root","paragraph","text","heading"].includes(node.type)
         <Astro.self node={node} />
     ))}
 </p>
-}
-{(node.type == "text") &&
-    node.value
 }
 {other_type &&
     <Fragment set:html={toHtml(toHast(node))}></Fragment>

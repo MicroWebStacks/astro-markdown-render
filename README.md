@@ -27,6 +27,11 @@ Given the required purity of Markdown content, it is not intended to introduce c
 
 Some content generation providers e.g. Mermaid, Plantuml allow already custom images generation from content, the idea is to use code meta data to derive a custom handler for each content type. Given the naming flexibility of code meta data, this can allow endless components types variations using one single markdwon type 'code'. Same can be introduced for images with e.g. special meta data (extension, alt,...)
 
+# Design discussion
+* Heading : a heading is not just text but can recursively contain markdown elements
+    * first option is passing a recursively rendered content in a slot
+    * second option (opted for) is passing just a node and abstract all rendering logic in the component. This second otpion has the consequnce of the component being responsible to finalize all of the markdown to html rendering with the `toHtml(toHast())` utilities
+* Table : could have styed on the top renderer, taken down in a component to keep tyble related styling in a separate file
 
 # References
 * marked docs : https://marked.js.org/using_advanced
