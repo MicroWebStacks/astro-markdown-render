@@ -61,13 +61,13 @@ function relAssetToUrl(relativepath,refdir){
       }
       if(!existsSync(targetfile)){
         copyFileSync(filepath,targetfile)
-        console.log(`  utils.js> * new asset url = '${newurl}'`)
+        console.log(`utils.js> * new asset url = '${newurl}'`)
       }
       else if(isNewer(filepath,targetfile)){
         copyFileSync(filepath,targetfile)
-        console.log(`  utils.js> * updated asset url = '${newurl}'`)
+        console.log(`utils.js> * updated asset url = '${newurl}'`)
       }else{
-        //console.log(`  utils.js> * existing asset url = '${newurl}'`)
+        console.log(`utils.js> * existing asset url = '${newurl}'`)
       }
     }
 

@@ -1,0 +1,17 @@
+---
+import {relAssetToUrl} from '../../libs/utils'
+
+export interface Props {
+    node: object;
+    path: string;
+}
+
+const { node, path} = Astro.props as Props;
+const {title, url, alt} = node;
+
+const asseturl = relAssetToUrl(url, path)
+
+const isSvg = asseturl.endsWith(".svg")
+const isImg = !isSvg
+---
+<img src={asseturl} alt={alt} title={title} />

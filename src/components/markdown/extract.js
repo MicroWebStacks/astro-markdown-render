@@ -1,7 +1,7 @@
 import {fromMarkdown} from 'mdast-util-from-markdown'
 import {gfmTable} from 'micromark-extension-gfm-table'
 import {gfmTableFromMarkdown} from 'mdast-util-gfm-table'
-import {extractText, node_slug} from '../libs/utils'
+import {extractText, node_slug} from '../../libs/utils'
 
 function extract_tables(node){
     let current_heading_slug = ""
