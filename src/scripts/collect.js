@@ -1,8 +1,10 @@
 import {glob} from 'glob'
 import { join, sep, basename, dirname, parse } from 'path';
 import {promises as fs} from 'fs';
-import { check_dir_create,save_json, get_next_uid } from './utils.js';
-import { md_tree, title_slug, extract_headings } from './md_utils.js';
+import { check_dir_create,save_json, get_next_uid } from '../libs/utils.js';
+import { md_tree, title_slug, extract_headings,
+        extract_tables,extract_images,extract_code,
+        extract_paragraphs } from '../libs/md_utils.js';
 import {config} from '../../config.js'
 import matter from 'gray-matter';
 import { createHash } from 'crypto';
@@ -54,7 +56,7 @@ async function get_all_md_files(){
     return files
 }
 
-async function collect_content(files_paths){
+async function collect_documents(files_paths){
     let content_entries = []
     for(const file_path  of files_paths){
         const url_type = (file_path.endsWith("readme.md")?"dir":"file")
@@ -80,27 +82,41 @@ async function collect_content(files_paths){
     return content_entries
 }
 
-async function parse_content(content){
+async function parse_documents(content){
     for(const entry of content){
         const abs_file_path = join(config.rootdir,"content",entry.path)
         const text = await fs.readFile(abs_file_path,'utf-8')
         const {content, data} = matter(text)
         const tree = md_tree(content)
-        const dir = `gen/db/${entry.sid}/`
+        const dir = `gen/documents/${entry.sid}/`
         await check_dir_create(dir)
         await save_json(tree,dir+"tree.json")
+
         const headings = extract_headings(tree)
         entry.headings = headings
+        const tables = extract_tables(tree,headings)
+        entry.tables = tables
+        const images = extract_images(tree,headings)
+        entry.images = images
+        const code = extract_code(tree,headings)
+        entry.code = code
+        const paragraphs = extract_paragraphs(tree,headings)
+        entry.paragraphs = paragraphs
+
         await save_json(entry,dir+"content.json")
     }
 }
 
 async function run(){
     const files_paths = await get_all_md_files()
-    const content = await collect_content(files_paths)
+    const documents = await collect_documents(files_paths)
+    const content = {
+        documents
+    }
+    
     await check_dir_create("gen")
     await save_json(content,"gen/index.json")
-    await parse_content(content)
+    await parse_documents(content.documents)
 }
 
 await run()

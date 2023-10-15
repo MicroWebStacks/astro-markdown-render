@@ -25,7 +25,8 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.0.0",
     "slugify": "^1.6.6",
-    "unified": "^11.0.3"
+    "unified": "^11.0.3",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "astro": "3.2.2"

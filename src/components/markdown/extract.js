@@ -1,4 +1,4 @@
-import {extractText, node_slug} from '../../libs/md_utils'
+import {node_text_list, node_slug} from '../../libs/md_utils'
 
 function extract_tables(node){
     let current_heading_slug = ""
@@ -10,7 +10,7 @@ function extract_tables(node){
             console.log(`Table in Heading: ${current_heading_slug}`);
             tables_list.push({
                 heading: current_heading_slug,
-                cells:extractText(node)
+                cells:node_text_list(node)
             })
         }
 
@@ -34,7 +34,7 @@ function extract_paragraphs_text(node){
             //console.log(`Paragraph in Heading: ${current_heading_slug}`);
             paragraphs_list.push({
                 heading: current_heading_slug,
-                text:extractText(node)
+                text:node_text_list(node)
             })
         }
 
