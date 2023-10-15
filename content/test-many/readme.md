@@ -1,3 +1,6 @@
+---
+title: Test Many
+---
 # hello markdown
 **style** text
 

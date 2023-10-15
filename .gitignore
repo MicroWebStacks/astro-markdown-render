@@ -4,6 +4,7 @@ dist/
 
 public
 debug
+gen
 
 # dependencies
 node_modules/

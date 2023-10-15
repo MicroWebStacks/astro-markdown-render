@@ -27,10 +27,10 @@ const isImg = !isSvg
   </div>
   <div class="figure">
     {isSvg&&
-      <object data={asseturl} />
+      <object data={asseturl} name={title} data-alt={alt} />
     }
     {isImg&&
-      <img src={asseturl} />
+      <img src={asseturl} title={title} alt={alt} />
     }
   </div>
   <PanZoomModal url={asseturl} />

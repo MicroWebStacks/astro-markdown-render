@@ -1,3 +1,6 @@
+---
+title: title Complex
+---
 # complex **title**
 this paragraph is from a complex heading
 

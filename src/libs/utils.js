@@ -1,5 +1,6 @@
 import slugify from 'slugify'
 import {existsSync,copyFileSync,mkdirSync,statSync} from 'fs'
+import {promises as fs} from 'fs';
 import {resolve,dirname,join,relative} from 'path'
 import {config} from '../../config.js'
 
@@ -21,6 +22,10 @@ function extractText(node){
 }
 
 
+function title_slug(title){
+  const slug = slugify(title,{lower:true})
+  return slug
+}
 
 function node_slug(node){
     let text_list = extractText(node);
@@ -44,11 +49,11 @@ function relAssetToUrl(relativepath,refdir){
     if(existsSync(filepath)){
       //console.log(`   * impo*rt.me*ta.ur*l = ${import.meta.url}`)
 
-      let outdir = config.outdir
+      let rel_outdir = config.rel_outdir
       if(import.meta.env.MODE == "development"){
-        outdir = "public"
+        rel_outdir = "public"
       }
-      const targetroot = join(config.rootdir,outdir,"raw")
+      const targetroot = join(config.rootdir,rel_outdir,"raw")
       const filerootrel = relative(config.rootdir,refdir)
       const targetpath = resolve(targetroot,filerootrel)
       const targetfile = join(targetpath,relativepath)
@@ -74,8 +79,28 @@ function relAssetToUrl(relativepath,refdir){
     return newurl
 }
 
+async function check_dir_create(dirname){
+  const abs_dir = join(config.rootdir,dirname)
+  console.log(abs_dir)
+  try {
+      await fs.access(abs_dir)
+  } catch {
+    console.log("mkdir")
+    await fs.mkdir(abs_dir, { recursive: true });
+  }
+}
+
+async function save_json(data,file_path){
+  const filepath = join(config.rootdir,file_path)
+  await fs.writeFile(filepath,JSON.stringify(data,undefined, 2))
+  console.log(` saved json file ${filepath}`)
+}
+
 export{
     extractText,
     node_slug,
-    relAssetToUrl
+    relAssetToUrl,
+    check_dir_create,
+    save_json,
+    title_slug
 }

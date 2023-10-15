@@ -5,7 +5,7 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["src/components/*"],
-      "@/layout/*": ["src/layout/*"],
+      "@/layouts/*": ["src/layouts/*"],
       "@/svg/*": ["src/svg/*"],
       "@/libs/*": ["src/libs/*"],
       "@/assets/*": ["src/assets/*"],

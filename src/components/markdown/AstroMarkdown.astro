@@ -6,11 +6,12 @@ import Render from './Render.astro';
 
 export interface Props {
 	content: string;
+  data: object;
   path: string;
 }
 
-const { content,path } = Astro.props;
-
+const { content, data, path } = Astro.props;
+console.log(data)
 if(!existsSync("./debug")){
     mkdirSync("./debug")
   }
