@@ -40,7 +40,7 @@ function get_next_url(url,url_list){
 let content_urls = new Map()
 
 function get_url(slug,type){
-    let url = type === "generic" ? slug : `${type}/${slug}`
+    let url = (type === "generic") ? slug : `${type}/${slug}`
     if(!content_urls.has(type)){
         content_urls.set(type,[url])    //create new list
     }else{
@@ -68,12 +68,13 @@ async function save_files(){
         const text = await fs.readFile(abs_file_path,'utf-8')
         const {content, data} = matter(text)
         const slug = get_slug(data,file_path,url_type)
+        const content_type = get_type(data)
         let entry       = {
             ...data,
+            content_type:       content_type,
             url_type:   url_type,
-            type:       get_type(data),
             slug:       slug,                   //not unique
-            url:        get_url(slug,url_type), //unique, fallback appending -1, -2,...
+            url:        get_url(slug,content_type), //unique, fallback appending -1, -2,...
             path:       file_path
         }
 

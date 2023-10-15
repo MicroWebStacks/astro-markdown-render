@@ -4,14 +4,15 @@ import Panzoom from './panzoom/panzoom.astro'
 
 export interface Props {
     node: object;
-    path: string;
+    filepath: string;
 }
 
-const { node, path} = Astro.props as Props;
+const { node, filepath} = Astro.props as Props;
 const {title, url, alt} = node;
 
-const asseturl = relAssetToUrl(url, path)
-
+console.log(`url / filepath = ${url} / ${filepath}`)
+const asseturl = relAssetToUrl(url, filepath)
+console.log(`asseturl = ${asseturl}`)
 const isSvg = asseturl.endsWith(".svg")
 const isImg = !isSvg
 ---

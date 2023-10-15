@@ -6,22 +6,22 @@ import {toHast} from 'mdast-util-to-hast'
 import {toHtml} from 'hast-util-to-html'
 export interface Props {
     node: Object;
-    path:string;
+    filepath:string;
 }
 
-const {node, path} = Astro.props;
+const {node, filepath} = Astro.props;
 const handled_types = ["root","heading","table","paragraph","image"]
 const other_type = !handled_types.includes(node.type)
 ---
 {(node.type == "root") &&
     node.children.map((node)=>(
-        <Astro.self node={node} path={path} />
+        <Astro.self node={node} filepath={filepath} />
     ))
 }
 {(node.type == "paragraph") &&
 <p>
     {node.children.map((node)=>(
-        <Astro.self node={node} path={path}/>
+        <Astro.self node={node} filepath={filepath}/>
     ))}
 </p>
 }
@@ -32,7 +32,7 @@ const other_type = !handled_types.includes(node.type)
     <Table node={node} />
 }
 {(node.type == "image") &&
-    <Image node={node}  path={path}/>
+    <Image node={node}  filepath={filepath}/>
 }
 {other_type &&
     <Fragment set:html={toHtml(toHast(node))}></Fragment>

@@ -7,10 +7,9 @@ import Render from './Render.astro';
 export interface Props {
 	content: string;
   data: object;
-  path: string;
 }
 
-const { content, data, path } = Astro.props;
+const { content, data } = Astro.props;
 console.log(data)
 if(!existsSync("./debug")){
     mkdirSync("./debug")
@@ -25,4 +24,4 @@ await fs.writeFile("./debug/tables.json",JSON.stringify(tables,null,4))
 const paragraphs = extract_paragraphs_text(tree)
 await fs.writeFile("./debug/paragraphs.json",JSON.stringify(paragraphs,null,4))
 ---
-<Render node={tree} path={path}/>
+<Render node={tree} filepath={data.path}/>

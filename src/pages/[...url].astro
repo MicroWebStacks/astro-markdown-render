@@ -2,31 +2,33 @@
 import Layout from '../layouts/Layout.astro';
 import Markdown from '../components/markdown/Marked.astro';
 import AstroMarkdown from '../components/markdown/AstroMarkdown.astro'
-import pages from '../../pages.json'
+import content from '../../gen/content.json'
 import {promises as fs} from 'fs';
 import matter from 'gray-matter';
 
-const {slug} = Astro.params;
-const path = `./content/${slug}`
-const text = await fs.readFile(`${path}/readme.md`,'utf-8')
-const {content, data} = matter(text)
+const {url} = Astro.params;
+console.log(`in [...url] > url = ${url}`)
+const entry = content.filter((entry)=>(entry.url == url))[0]
+const path = `./content/${entry.path}`
+const text = await fs.readFile(path,'utf-8')
+const {content:md_content, data:front_matter_data} = matter(text)
 
 export async function getStaticPaths(){
-    return pages.map((entry)=>({params:{slug:entry.slug}}))
+	return content.map((entry)=>({params:{url:entry.url}}))
 }
 
 ---
-<Layout title={data.title}>
+<Layout title={entry.title}>
 	<a href="/">Home</a>
 	<hr/>
 	<div>Marked Renderer</div>
 	<div class="instructions">
-		<Markdown content={content} />
+		<Markdown content={md_content} />
 	</div>
 	<hr/>
 	<div>Astro Markdown Renderer</div>
 	<div class="instructions">
-		<AstroMarkdown content={content} data={data} path={path}/>
+		<AstroMarkdown content={md_content} data={entry} />
 	</div>
 </Layout>
 

@@ -42,10 +42,11 @@ function isNewer(filepath,targetfile){
 }
 
 //Note 'imp*ort.me*ta.en*v.BA*SE_URL' only works from Astro component not from remark-rel-asset plugin
-function relAssetToUrl(relativepath,refdir){
+function relAssetToUrl(relativepath,refFile){
+  const refdir = join("content",dirname(refFile))
     let newurl = relativepath
     const filepath = join(refdir,relativepath)
-    console.log(filepath)
+    console.log(`relAssetToUrl> filepath = ${filepath}`)
     if(existsSync(filepath)){
       //console.log(`   * impo*rt.me*ta.ur*l = ${import.meta.url}`)
 
