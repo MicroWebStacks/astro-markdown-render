@@ -1,9 +1,11 @@
 import {glob} from 'glob'
 import { join, sep, basename, dirname, parse } from 'path';
 import {promises as fs} from 'fs';
-import { check_dir_create,save_json,title_slug } from './utils.js';
+import { check_dir_create,save_json, get_next_uid } from './utils.js';
+import { md_tree, title_slug, extract_headings } from './md_utils.js';
 import {config} from '../../config.js'
 import matter from 'gray-matter';
+import { createHash } from 'crypto';
 
 function get_type(data){
     if(Object.hasOwn("type")){
@@ -25,31 +27,24 @@ function get_slug(data,path,url_type){
     }
 }
 
-function get_next_url(url,url_list){
-    let counter = 1;
-    let newUrl = url;
-    
-    while (url_list.includes(newUrl)) {
-        counter++;
-        newUrl = `${url}-${counter}`;
-    }
-
-    return newUrl;
-}
-
 let content_urls = new Map()
 
-function get_url(slug,type){
-    let url = (type === "generic") ? slug : `${type}/${slug}`
+function get_uid(slug,type){
+    let uid = (type === "generic") ? slug : `${type}/${slug}`
     if(!content_urls.has(type)){
-        content_urls.set(type,[url])    //create new list
+        content_urls.set(type,[uid])    //create new list
     }else{
-        url = get_next_url(url,content_urls.get(type))
-        content_urls.get(type).push(url)
+        uid = get_next_uid(uid,content_urls.get(type))
+        content_urls.get(type).push(uid)
     }
-    return url
+    return uid
 }
 
+function get_sid(uid){
+    const hash = createHash('md5')
+    hash.update(uid)
+    return hash.digest('hex').slice(0,8)
+}
 
 async function get_all_md_files(){
     const content_dir = join(config.rootdir,'content');
@@ -59,8 +54,7 @@ async function get_all_md_files(){
     return files
 }
 
-async function save_files(){
-    const files_paths = await get_all_md_files()
+async function collect_content(files_paths){
     let content_entries = []
     for(const file_path  of files_paths){
         const url_type = (file_path.endsWith("readme.md")?"dir":"file")
@@ -69,19 +63,44 @@ async function save_files(){
         const {content, data} = matter(text)
         const slug = get_slug(data,file_path,url_type)
         const content_type = get_type(data)
+        const uid = get_uid(slug,content_type)
+        const sid = get_sid(uid)
         let entry       = {
             ...data,
-            content_type:       content_type,
-            url_type:   url_type,
-            slug:       slug,                   //not unique
-            url:        get_url(slug,content_type), //unique, fallback appending -1, -2,...
-            path:       file_path
+            path:           file_path,
+            content_type:   content_type,
+            url_type:       url_type,
+            slug:           slug,       //not unique
+            uid:            uid,        //unique, fallback appending -1, -2,...
+            sid:            sid         //short unique id
         }
 
         content_entries.push(entry)
     }
-    await check_dir_create("gen")
-    await save_json(content_entries,"gen/content.json")
+    return content_entries
 }
 
-await save_files()
+async function parse_content(content){
+    for(const entry of content){
+        const abs_file_path = join(config.rootdir,"content",entry.path)
+        const text = await fs.readFile(abs_file_path,'utf-8')
+        const {content, data} = matter(text)
+        const tree = md_tree(content)
+        const dir = `gen/db/${entry.sid}/`
+        await check_dir_create(dir)
+        await save_json(tree,dir+"tree.json")
+        const headings = extract_headings(tree)
+        entry.headings = headings
+        await save_json(entry,dir+"content.json")
+    }
+}
+
+async function run(){
+    const files_paths = await get_all_md_files()
+    const content = await collect_content(files_paths)
+    await check_dir_create("gen")
+    await save_json(content,"gen/index.json")
+    await parse_content(content)
+}
+
+await run()

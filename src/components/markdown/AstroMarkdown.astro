@@ -1,5 +1,6 @@
 ---
-import {md_tree, extract_tables, extract_paragraphs_text} from './extract'
+import {extract_tables, extract_paragraphs_text} from './extract'
+import {md_tree} from '@/libs/md_utils.js'
 import {promises as fs} from 'fs';
 import {mkdirSync,existsSync} from 'fs'
 import Render from './Render.astro';

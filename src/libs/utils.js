@@ -1,39 +1,8 @@
-import slugify from 'slugify'
 import {existsSync,copyFileSync,mkdirSync,statSync} from 'fs'
 import {promises as fs} from 'fs';
 import {resolve,dirname,join,relative} from 'path'
 import {config} from '../../config.js'
 
-function extractText(node){
-    const text_list = [];
-    
-    function traverse(node) {
-        if(node.type == "text"){
-            text_list.push(node.value)
-        }
-        if (node.children) {
-            for (const child of node.children) {
-                traverse(child);
-            }
-        }
-    }
-    traverse(node)
-    return text_list;
-}
-
-
-function title_slug(title){
-  const slug = slugify(title,{lower:true})
-  return slug
-}
-
-function node_slug(node){
-    let text_list = extractText(node);
-    text_list = text_list.map((text)=>(text.trim()))
-    const text_string = text_list.join('-')
-    const slug = slugify(text_string,{lower:true})
-    return slug
-}
 
 function isNewer(filepath,targetfile){
   const t1 = statSync(filepath).mtime
@@ -97,11 +66,21 @@ async function save_json(data,file_path){
   console.log(` saved json file ${filepath}`)
 }
 
+function get_next_uid(url,uid_list){
+  let counter = 1;
+  let newUrl = url;
+  
+  while (uid_list.includes(newUrl)) {
+      counter++;
+      newUrl = `${url}-${counter}`;
+  }
+
+  return newUrl;
+}
+
 export{
-    extractText,
-    node_slug,
     relAssetToUrl,
     check_dir_create,
     save_json,
-    title_slug
+    get_next_uid
 }

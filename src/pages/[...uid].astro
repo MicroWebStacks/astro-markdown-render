@@ -2,19 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import Markdown from '../components/markdown/Marked.astro';
 import AstroMarkdown from '../components/markdown/AstroMarkdown.astro'
-import content from '../../gen/content.json'
+import index from '../../gen/index.json'
 import {promises as fs} from 'fs';
 import matter from 'gray-matter';
 
-const {url} = Astro.params;
-console.log(`in [...url] > url = ${url}`)
-const entry = content.filter((entry)=>(entry.url == url))[0]
+const {uid} = Astro.params;
+console.log(`in [...url] > url = ${uid}`)
+const entry = index.filter((entry)=>(entry.uid == uid))[0]
 const path = `./content/${entry.path}`
 const text = await fs.readFile(path,'utf-8')
 const {content:md_content, data:front_matter_data} = matter(text)
 
 export async function getStaticPaths(){
-	return content.map((entry)=>({params:{url:entry.url}}))
+	return index.map((entry)=>({params:{uid:entry.uid}}))
 }
 
 ---

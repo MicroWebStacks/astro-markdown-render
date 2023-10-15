@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import content from '../../gen/content.json'
+import index from '../../gen/index.json'
 
 ---
 
@@ -14,9 +14,9 @@ import content from '../../gen/content.json'
 			<p>remote markdown using Remark Abstract Syntax Tree</p>
 		</div>
 		<ul>
-			{content.map((entry)=>(
+			{index.map((entry)=>(
 				<li>
-					<a href={entry.url}>{entry.title}</a>
+					<a href={entry.uid}>{entry.title}</a>
 				</li>
 			))}
 		</ul>

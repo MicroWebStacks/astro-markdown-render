@@ -1,7 +1,4 @@
-import {fromMarkdown} from 'mdast-util-from-markdown'
-import {gfmTable} from 'micromark-extension-gfm-table'
-import {gfmTableFromMarkdown} from 'mdast-util-gfm-table'
-import {extractText, node_slug} from '../../libs/utils'
+import {extractText, node_slug} from '../../libs/md_utils'
 
 function extract_tables(node){
     let current_heading_slug = ""
@@ -64,17 +61,8 @@ function traverse(node, depth = 0) {
     }
 }
 
-function md_tree(content){
-    const tree = fromMarkdown(content,{
-        extensions: [gfmTable()],
-        mdastExtensions: [gfmTableFromMarkdown()]
-    })
-    return tree
-}
-
 
 export{
-    md_tree,
     traverse,
     extract_tables,
     extract_paragraphs_text
