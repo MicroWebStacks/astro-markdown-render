@@ -107,7 +107,7 @@ function extract_tables(tree,headings){
     })
     return tables_list
 }
-function extract_images(tree,headings){
+function extract_images(tree,headings,sid){
     let images_list = []
     let images_slug_list = []
     visit(tree, node=> {
@@ -120,7 +120,8 @@ function extract_images(tree,headings){
                 heading:heading_from_line(headings,node.position.start.line),
                 title:node.title,
                 url:node.url,
-                alt:node.alt
+                alt:node.alt,
+                document:sid
             })
         }
     })

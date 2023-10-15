@@ -83,40 +83,45 @@ async function collect_documents(files_paths){
 }
 
 async function parse_documents(content){
+    let all_images = []
     for(const entry of content){
+        const entry_details = JSON.parse(JSON.stringify(entry))
         const abs_file_path = join(config.rootdir,"content",entry.path)
         const text = await fs.readFile(abs_file_path,'utf-8')
         const {content, data} = matter(text)
         const tree = md_tree(content)
+
+        const headings = extract_headings(tree)
+        entry_details.headings = headings
+        const tables = extract_tables(tree,headings)
+        entry_details.tables = tables
+        const images = extract_images(tree,headings,entry.sid)
+        entry_details.images = images
+        all_images.push(...images)
+        const code = extract_code(tree,headings)
+        entry_details.code = code
+        const paragraphs = extract_paragraphs(tree,headings)
+        entry_details.paragraphs = paragraphs
+
         const dir = `gen/documents/${entry.sid}/`
         await check_dir_create(dir)
         await save_json(tree,dir+"tree.json")
-
-        const headings = extract_headings(tree)
-        entry.headings = headings
-        const tables = extract_tables(tree,headings)
-        entry.tables = tables
-        const images = extract_images(tree,headings)
-        entry.images = images
-        const code = extract_code(tree,headings)
-        entry.code = code
-        const paragraphs = extract_paragraphs(tree,headings)
-        entry.paragraphs = paragraphs
-
-        await save_json(entry,dir+"content.json")
+        await save_json(entry_details,dir+"content.json")
     }
+    return {all_images}
 }
 
 async function run(){
     const files_paths = await get_all_md_files()
     const documents = await collect_documents(files_paths)
+    const {all_images} = await parse_documents(documents)
     const content = {
-        documents
+        documents,
+        images:all_images
     }
     
     await check_dir_create("gen")
     await save_json(content,"gen/index.json")
-    await parse_documents(content.documents)
 }
 
 await run()
