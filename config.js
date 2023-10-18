@@ -6,9 +6,10 @@ const __dirname = dirname(__filename);
 
 const config = {
     rootdir: __dirname,
-    rel_outdir: "dist"
+    rel_outdir: "dist",
+    outDir: "dist"
 }
-console.log(config)
+
 export {
     config
 }
