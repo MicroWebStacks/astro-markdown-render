@@ -5,16 +5,20 @@ import AstroMarkdown from '../components/markdown/AstroMarkdown.astro'
 import index from '../../gen/index.json'
 import {promises as fs} from 'fs';
 import matter from 'gray-matter';
+import {load_json} from '@/libs/utils'
 
 const {uid} = Astro.params;
 console.log(`in [...url] > url = ${uid}`)
-const entry = index.filter((entry)=>(entry.uid == uid))[0]
+const entry = index.documents.filter((entry)=>(entry.uid == uid))[0]
 const path = `./content/${entry.path}`
 const text = await fs.readFile(path,'utf-8')
 const {content:md_content, data:front_matter_data} = matter(text)
 
+const data_content = await load_json(`gen/documents/${entry.sid}/content.json`)
+const tree = await load_json(`gen/documents/${entry.sid}/tree.json`)
+
 export async function getStaticPaths(){
-	return index.map((entry)=>({params:{uid:entry.uid}}))
+	return index.documents.map((entry)=>({params:{uid:entry.uid}}))
 }
 
 ---
@@ -28,7 +32,7 @@ export async function getStaticPaths(){
 	<hr/>
 	<div>Astro Markdown Renderer</div>
 	<div class="instructions">
-		<AstroMarkdown content={md_content} data={entry} />
+		<AstroMarkdown node={tree} data={data_content} />
 	</div>
 </Layout>
 

@@ -1,17 +1,17 @@
 ---
 import {toHast} from 'mdast-util-to-hast'
 import {toHtml} from 'hast-util-to-html'
-import {node_slug} from '@/libs/md_utils'
 import Svgicons from '../svgicons.astro';
 export interface Props {
     node: object;
+    headings: object;
 }
 
-const { node } = Astro.props as Props;
+const { node, headings } = Astro.props as Props;
 
 const HeadingLevel = `h${node.depth}`
-const slug = node_slug(node)
-
+const heading_line = node.position.start.line
+const slug = headings.find((entry)=>(entry.line == heading_line)).slug
 ---
 <HeadingLevel id={slug} class="heading bar">
   <a href={`#${slug}`} class="link">

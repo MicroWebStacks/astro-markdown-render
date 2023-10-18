@@ -49,6 +49,13 @@ function relAssetToUrl(relativepath,refFile){
     return newurl
 }
 
+async function load_json(rel_path){
+  const path = join(config.rootdir,rel_path)
+  const text = await fs.readFile(path,'utf-8')
+  return JSON.parse(text)
+}
+
 export{
-    relAssetToUrl
+    relAssetToUrl,
+    load_json
 }

@@ -14,7 +14,7 @@ import index from '../../gen/index.json'
 			<p>remote markdown using Remark Abstract Syntax Tree</p>
 		</div>
 		<ul>
-			{index.map((entry)=>(
+			{index.documents.map((entry)=>(
 				<li>
 					<a href={entry.uid}>{entry.title}</a>
 				</li>
