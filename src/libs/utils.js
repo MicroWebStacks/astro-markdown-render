@@ -49,38 +49,6 @@ function relAssetToUrl(relativepath,refFile){
     return newurl
 }
 
-async function check_dir_create(dirname){
-  const abs_dir = join(config.rootdir,dirname)
-  console.log(abs_dir)
-  try {
-      await fs.access(abs_dir)
-  } catch {
-    console.log("mkdir")
-    await fs.mkdir(abs_dir, { recursive: true });
-  }
-}
-
-async function save_json(data,file_path){
-  const filepath = join(config.rootdir,file_path)
-  await fs.writeFile(filepath,JSON.stringify(data,undefined, 2))
-  console.log(` saved json file ${filepath}`)
-}
-
-function get_next_uid(url,uid_list){
-  let counter = 1;
-  let newUrl = url;
-  
-  while (uid_list.includes(newUrl)) {
-      counter++;
-      newUrl = `${url}-${counter}`;
-  }
-
-  return newUrl;
-}
-
 export{
-    relAssetToUrl,
-    check_dir_create,
-    save_json,
-    get_next_uid
+    relAssetToUrl
 }
