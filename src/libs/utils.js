@@ -12,7 +12,7 @@ function isNewer(filepath,targetfile){
 
 //Note 'imp*ort.me*ta.en*v.BA*SE_URL' only works from Astro component not from remark-rel-asset plugin
 function relAssetToUrl(relativepath,refFile){
-  const refdir = join("content",dirname(refFile))
+  const refdir = join(config.rootdir,"content",dirname(refFile))
     let newurl = relativepath
     const filepath = join(refdir,relativepath)
     console.log(`relAssetToUrl> filepath = ${filepath}`)

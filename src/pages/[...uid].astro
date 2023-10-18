@@ -6,11 +6,14 @@ import index from '../../gen/index.json'
 import {promises as fs} from 'fs';
 import matter from 'gray-matter';
 import {load_json} from '@/libs/utils'
+import {config} from '@/config.js'
+import {join} from 'path'
 
 const {uid} = Astro.params;
 console.log(`in [...url] > url = ${uid}`)
 const entry = index.documents.filter((entry)=>(entry.uid == uid))[0]
-const path = `./content/${entry.path}`
+const path = join(config.rootdir,`./content/${entry.path}`)
+console.log(path)
 const text = await fs.readFile(path,'utf-8')
 const {content:md_content, data:front_matter_data} = matter(text)
 
