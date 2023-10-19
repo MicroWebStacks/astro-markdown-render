@@ -9,11 +9,8 @@ dependencies:
     specifier: ^3.2.0
     version: 3.2.0
   content-structure:
-    specifier: ^0.1.4
-    version: 0.1.4
-  glob:
-    specifier: ^10.3.10
-    version: 10.3.10
+    specifier: ^0.1.6
+    version: 0.1.6
   gray-matter:
     specifier: ^4.0.3
     version: 4.0.3
@@ -23,39 +20,15 @@ dependencies:
   marked:
     specifier: ^9.1.0
     version: 9.1.0
-  mdast-util-from-markdown:
-    specifier: ^2.0.0
-    version: 2.0.0
-  mdast-util-gfm-table:
-    specifier: ^2.0.0
-    version: 2.0.0
   mdast-util-to-hast:
     specifier: ^13.0.2
     version: 13.0.2
-  micromark-extension-gfm-table:
-    specifier: ^2.0.0
-    version: 2.0.0
   panzoom:
     specifier: ^9.4.3
     version: 9.4.3
   remark:
     specifier: ^15.0.1
     version: 15.0.1
-  remark-parse:
-    specifier: ^11.0.0
-    version: 11.0.0
-  remark-rehype:
-    specifier: ^11.0.0
-    version: 11.0.0
-  slugify:
-    specifier: ^1.6.6
-    version: 1.6.6
-  unified:
-    specifier: ^11.0.3
-    version: 11.0.3
-  unist-util-visit:
-    specifier: ^5.0.0
-    version: 5.0.0
 
 devDependencies:
   astro:
@@ -1285,8 +1258,8 @@ packages:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
     dev: true
 
-  /content-structure@0.1.4:
-    resolution: {integrity: sha512-MbD8ozfUR16oJKeF5SqnTSI+ElZyWgXIiQKmwasDHZiJqdjhPkQOY/NRS3zxTxc/tI1BiUTKzcSwxjLEuuQ22A==}
+  /content-structure@0.1.6:
+    resolution: {integrity: sha512-fj+hMoautFxG0Ww7NZW0WBB1yhJDbFcNkToxurJEao5rzXLz4JQfn/NZZzlTGc4nEf6kzp7OLZLB18RA3kTgfA==}
     dependencies:
       glob: 10.3.10
       gray-matter: 4.0.3
@@ -3230,16 +3203,6 @@ packages:
       mdast-util-to-hast: 12.3.0
       unified: 10.1.2
     dev: true
-
-  /remark-rehype@11.0.0:
-    resolution: {integrity: sha512-vx8x2MDMcxuE4lBmQ46zYUDfcFMmvg80WYX+UNLeG6ixjdCCLcw1lrgAukwBTuOFsS78eoAedHGn9sNM0w7TPw==}
-    dependencies:
-      '@types/hast': 3.0.1
-      '@types/mdast': 4.0.1
-      mdast-util-to-hast: 13.0.2
-      unified: 11.0.3
-      vfile: 6.0.1
-    dev: false
 
   /remark-smartypants@2.0.0:
     resolution: {integrity: sha512-Rc0VDmr/yhnMQIz8n2ACYXlfw/P/XZev884QU1I5u+5DgJls32o97Vc1RbK3pfumLsJomS2yy8eT4Fxj/2MDVA==}
