@@ -1,0 +1,20 @@
+---
+import shiki from 'shiki';
+import { getTheme } from 'shiki-themes';
+import {toHast} from 'mdast-util-to-hast'
+import {toHtml} from 'hast-util-to-html'
+
+export interface Props {
+    node: object;
+}
+
+const { node } = Astro.props as Props;
+
+const highlighter = await shiki.getHighlighter({theme:'dark-plus'})
+
+const html = highlighter.codeToHtml(node.value, { lang: 'js' })
+
+---
+<div>
+    <Fragment set:html={html}></Fragment>
+</div>

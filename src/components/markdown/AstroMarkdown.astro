@@ -2,6 +2,7 @@
 import Heading from '../replace/Heading.astro';
 import Table from '../replace/Table.astro'
 import Image from '../replace/Image.astro'
+import Code from '../replace/Code.astro'
 import {toHast} from 'mdast-util-to-hast'
 import {toHtml} from 'hast-util-to-html'
 export interface Props {
@@ -10,7 +11,7 @@ export interface Props {
 }
 
 const {node, data} = Astro.props;
-const handled_types = ["root","heading","table","paragraph","image"]
+const handled_types = ["root","heading","table","paragraph","image","code"]
 const other_type = !handled_types.includes(node.type)
 ---
 {(node.type == "root") &&
@@ -33,6 +34,9 @@ const other_type = !handled_types.includes(node.type)
 }
 {(node.type == "image") &&
     <Image node={node}  filepath={data.path}/>
+}
+{(node.type == "code") &&
+    <Code node={node}  filepath={data.path}/>
 }
 {other_type &&
     <Fragment set:html={toHtml(toHast(node))}></Fragment>
