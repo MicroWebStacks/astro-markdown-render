@@ -11,6 +11,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@mermaid-js/mermaid-cli": "^10.5.0",
     "@svgdotjs/svg.js": "^3.2.0",
     "content-structure": "^0.1.6",
     "gray-matter": "^4.0.3",

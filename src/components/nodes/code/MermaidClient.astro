@@ -1,0 +1,36 @@
+---
+import mermaid from 'mermaid'
+
+export interface Props {
+    code: string;
+    params: object;
+}
+
+const { code, params } = Astro.props as Props;
+
+console.log("Memraid> 0)")
+
+
+async function renderMermaidDiagram(mermaid_code) {
+  mermaid.initialize({ startOnLoad: true });
+
+  const renderPromise = new Promise((resolve) => {
+    mermaid.render('mermaid-diagram', mermaid_code, (svgCode) => {
+      resolve(svgCode);
+    });
+  });
+
+  const svgCode = await renderPromise;
+  return svgCode;
+}
+
+mermaid.initialize({startOnLoad:true})
+
+console.log("Memraid> 1)")
+const  svg_text = await renderMermaidDiagram(code)
+console.log("Memraid> 2)")
+
+---
+<div>
+    <Fragment set:html={svg_text}></Fragment>
+</div>

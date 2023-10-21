@@ -1,0 +1,23 @@
+---
+import { run } from "@mermaid-js/mermaid-cli";
+import {promises as fs} from 'fs';
+import {join} from 'path'
+import {config} from '@/config.js'
+
+export interface Props {
+    code: string;
+    params: object;
+}
+
+const { code, params } = Astro.props as Props;
+
+const temp_file = join(config.rootdir,config.rel_outdir,"temp.mmd")
+await fs.writeFile(temp_file,code)
+const out_file = join(config.rootdir,config.rel_outdir,"mmd.svg")
+await run(temp_file, out_file);
+const svg_text = await fs.readFile(out_file,'utf-8')
+
+---
+<div>
+    <Fragment set:html={svg_text}></Fragment>
+</div>
