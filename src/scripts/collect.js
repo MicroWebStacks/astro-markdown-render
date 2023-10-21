@@ -1,7 +1,7 @@
 import {collect} from 'content-structure'
-import {join} from 'path'
+import {config} from '../../config.js'
 
 await collect({
-    rooturl:join(import.meta.url,"../.."),
-    rel_outdir:"../../gen"
+    rootdir:config.rootdir,
+    rel_outdir:"gen"
 })

@@ -4,7 +4,7 @@ import {dirname, join} from 'path'
 const __filename = fileURLToPath(import.meta.url);
 let __dirname = dirname(__filename);
 
-if(import.meta.env.MODE == "production"){
+if(import.meta.env?.MODE == "production"){
 	__dirname = join(__dirname,'../../..')
 }
 
