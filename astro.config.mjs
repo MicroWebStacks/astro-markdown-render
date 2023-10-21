@@ -9,5 +9,5 @@ const collect_content_config = {
 
 export default defineConfig({
     outDir: config.outDir,
-    integrations: [collect_content()]
+    integrations: [collect_content(collect_content_config)]
 });
