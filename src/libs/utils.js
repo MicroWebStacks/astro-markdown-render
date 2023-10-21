@@ -29,7 +29,7 @@ function relAssetToUrl(relativepath,refFile){
       const targetfile = join(targetpath,relativepath)
       const targetdir = dirname(targetfile)
       //console.log(`copy from '${filepath}' to '${targetfile}'`)
-      const newpath = join("raw/",filerootrel,relativepath)
+      const newpath = join("/raw/",filerootrel,relativepath)
       newurl = newpath.replaceAll('\\','/')
       if(!existsSync(targetdir)){
         mkdirSync(targetdir,{ recursive: true })
