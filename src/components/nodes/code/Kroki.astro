@@ -9,8 +9,6 @@ export interface Props {
 
 const { language, code, params } = Astro.props as Props;
 
-console.log("Kroki> 1)")
-
 const response = await fetch(`${config.kroki_server}/${language}/svg/`,{
   method: 'POST',
   body: code,
@@ -20,7 +18,6 @@ const response = await fetch(`${config.kroki_server}/${language}/svg/`,{
 })
 
 const  svg_text = await response.text()
-console.log("Kroki> 2)")
 
 ---
 <div>

@@ -10,8 +10,9 @@ import {config} from '@/config.js'
 import {join} from 'path'
 
 const {uid} = Astro.params;
-console.log(`in [...url] > url = ${uid}`)
+console.log(`in [...uid] > uid = ${uid}`)
 const entry = index.documents.filter((entry)=>(entry.uid == uid))[0]
+
 const path = join(config.rootdir,`./content/${entry.path}`)
 console.log(path)
 const text = await fs.readFile(path,'utf-8')
