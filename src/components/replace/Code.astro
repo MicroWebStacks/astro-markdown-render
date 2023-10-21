@@ -1,5 +1,5 @@
 ---
-import {getHighlighter} from 'shikiji';
+import Highlighter from './Highlighter.astro';
 
 export interface Props {
     node: object;
@@ -7,19 +7,8 @@ export interface Props {
 
 const { node } = Astro.props as Props;
 
-const highlighter = await getHighlighter({theme:'dark-plus'})
-
-await highlighter.loadTheme('dark-plus')
-await highlighter.loadLanguage('js')
-const html = highlighter.codeToHtml(node.value, { lang: 'js', theme:'dark-plus' })
-
+const code = node.value
+const language = node.lang
+const params = node.meta?node.meta.split(' '):[]
 ---
-<div>
-    <Fragment set:html={html}></Fragment>
-</div>
-
-<style is:global>
-pre{
-    padding:10px;
-}
-</style>
+<Highlighter code={code} language={language} params={params} />
