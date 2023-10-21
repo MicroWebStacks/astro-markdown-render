@@ -1,5 +1,5 @@
 ---
-import shiki from 'shiki';
+import {getHighlighter} from 'shikiji';
 
 export interface Props {
     node: object;
@@ -7,9 +7,11 @@ export interface Props {
 
 const { node } = Astro.props as Props;
 
-const highlighter = await shiki.getHighlighter({theme:'dark-plus'})
+const highlighter = await getHighlighter({theme:'dark-plus'})
 
-const html = highlighter.codeToHtml(node.value, { lang: 'js' })
+await highlighter.loadTheme('dark-plus')
+await highlighter.loadLanguage('js')
+const html = highlighter.codeToHtml(node.value, { lang: 'js', theme:'dark-plus' })
 
 ---
 <div>
