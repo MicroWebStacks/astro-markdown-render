@@ -13,7 +13,7 @@
   "dependencies": {
     "@mermaid-js/mermaid-cli": "^10.5.0",
     "@svgdotjs/svg.js": "^3.2.0",
-    "content-structure": "^0.1.6",
+    "content-structure": "^0.1.7",
     "gray-matter": "^4.0.3",
     "hast-util-to-html": "^9.0.0",
     "marked": "^9.1.0",

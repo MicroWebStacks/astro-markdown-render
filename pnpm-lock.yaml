@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.2.0
     version: 3.2.0
   content-structure:
-    specifier: ^0.1.6
-    version: 0.1.6
+    specifier: ^0.1.7
+    version: 0.1.7
   gray-matter:
     specifier: ^4.0.3
     version: 4.0.3
@@ -1345,8 +1345,8 @@ packages:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
     dev: true
 
-  /content-structure@0.1.6:
-    resolution: {integrity: sha512-fj+hMoautFxG0Ww7NZW0WBB1yhJDbFcNkToxurJEao5rzXLz4JQfn/NZZzlTGc4nEf6kzp7OLZLB18RA3kTgfA==}
+  /content-structure@0.1.7:
+    resolution: {integrity: sha512-6j5O6XZ4ug+mA0NjZFyv3hq71Wfs5lHBoK21csam9dbIWldHXOT8FlW54Lc+To4e9X+GmYu2rRpyu5e6cwKR0A==}
     dependencies:
       glob: 10.3.10
       gray-matter: 4.0.3
