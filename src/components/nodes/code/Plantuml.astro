@@ -1,0 +1,20 @@
+---
+import plantumlEncoder from "plantuml-encoder";
+import {config} from '@/config.js'
+
+export interface Props {
+    code: string;
+    params: object;
+}
+
+const { code, params } = Astro.props as Props;
+
+const url = `${config.plantuml_server}/${plantumlEncoder.encode(code)}`;
+
+const response = await fetch(url)
+
+const svg_text = await response.text()
+---
+<div>
+    <Fragment set:html={svg_text}></Fragment>
+</div>

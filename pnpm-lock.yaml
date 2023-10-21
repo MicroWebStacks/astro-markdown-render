@@ -26,6 +26,9 @@ dependencies:
   panzoom:
     specifier: ^9.4.3
     version: 9.4.3
+  plantuml-encoder:
+    specifier: ^1.4.0
+    version: 1.4.0
   remark:
     specifier: ^15.0.1
     version: 15.0.1
@@ -3022,6 +3025,10 @@ packages:
     dependencies:
       find-up: 4.1.0
     dev: true
+
+  /plantuml-encoder@1.4.0:
+    resolution: {integrity: sha512-sxMwpDw/ySY1WB2CE3+IdMuEcWibJ72DDOsXLkSmEaSzwEUaYBT6DWgOfBiHGCux4q433X6+OEFWjlVqp7gL6g==}
+    dev: false
 
   /postcss@8.4.31:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}

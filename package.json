@@ -18,6 +18,7 @@
     "marked": "^9.1.0",
     "mdast-util-to-hast": "^13.0.2",
     "panzoom": "^9.4.3",
+    "plantuml-encoder": "^1.4.0",
     "remark": "^15.0.1",
     "shikiji": "^0.6.10"
   },

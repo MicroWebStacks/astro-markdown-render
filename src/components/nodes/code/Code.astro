@@ -1,6 +1,6 @@
 ---
 import Highlighter from './Highlighter.astro';
-
+import Plantuml from './Plantuml.astro';
 export interface Props {
     node: object;
 }
@@ -10,5 +10,14 @@ const { node } = Astro.props as Props;
 const code = node.value
 const language = node.lang
 const params = node.meta?node.meta.split(' '):[]
+
+const custom_languages = ["plantuml"]
+const other_language = !custom_languages.includes(language)
+console.log(language)
 ---
-<Highlighter code={code} language={language} params={params} />
+{(language == "plantuml")&&
+    <Plantuml code={code} params={params} />
+}
+{other_language&&
+    <Highlighter code={code} language={language} params={params} />
+}

@@ -28,14 +28,14 @@ export async function getStaticPaths(){
 <Layout title={entry.title}>
 	<a href="/">Home</a>
 	<hr/>
-	<div>Marked Renderer</div>
-	<div class="instructions">
-		<Markdown content={md_content} />
-	</div>
-	<hr/>
 	<div>Astro Markdown Renderer</div>
 	<div class="instructions">
 		<AstroMarkdown node={tree} data={data_content} />
+	</div>
+	<hr/>
+	<div>comparision with Marked Renderer</div>
+	<div class="instructions">
+		<Markdown content={md_content} />
 	</div>
 </Layout>
 

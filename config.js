@@ -7,7 +7,8 @@ const __dirname = dirname(__filename);
 const config = {
     rootdir: __dirname,
     rel_outdir: "dist",
-    outDir: "dist"
+    outDir: "dist",
+    plantuml_server: "https://www.plantuml.com/plantuml/svg"
 }
 
 export {
