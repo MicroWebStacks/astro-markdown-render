@@ -1,6 +1,7 @@
 ---
 import Highlighter from './Highlighter.astro'
 import Plantuml from './Plantuml.astro'
+import Kroki from './Kroki.astro'
 import Mermaid from './Mermaid.astro'
 
 export interface Props {
@@ -13,12 +14,15 @@ const code = node.value
 const language = node.lang
 const params = node.meta?node.meta.split(' '):[]
 
-const custom_languages = ["plantuml","mermaid"]
+const custom_languages = ["plantuml","mermaid","blockdiag"]
 const other_language = !custom_languages.includes(language)
 console.log(language)
 ---
 {(language == "plantuml")&&
     <Plantuml code={code} params={params} />
+}
+{(language == "blockdiag")&&
+    <Kroki language={language} code={code} params={params} />
 }
 {(language == "mermaid")&&
     <Mermaid code={code} params={params} />

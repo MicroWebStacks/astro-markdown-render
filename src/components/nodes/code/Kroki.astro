@@ -1,0 +1,28 @@
+---
+import {config} from '@/config.js'
+
+export interface Props {
+    language: string;
+    code: string;
+    params: object;
+}
+
+const { language, code, params } = Astro.props as Props;
+
+console.log("Kroki> 1)")
+
+const response = await fetch(`${config.kroki_server}/${language}/svg/`,{
+  method: 'POST',
+  body: code,
+  headers: {
+    'Content-Type': 'text/plain',
+  },
+})
+
+const  svg_text = await response.text()
+console.log("Kroki> 2)")
+
+---
+<div>
+    <Fragment set:html={svg_text}></Fragment>
+</div>

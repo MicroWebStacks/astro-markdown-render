@@ -1,6 +1,42 @@
 # Astro Remark
 render remote markdown content using Astro components with the help of remark mdast
 
+* live demo : https://astro-remark.netlify.app/
+
+## usage
+The file `[...sid].astro` uses generated content from [content-structure](https://github.com/MicroWebStacks/content-structure) markdown parser.
+
+```js
+---
+const {sid} = Astro.params;
+import AstroMarkdown from '@/components/renderers/AstroMarkdown.astro'
+
+const data_content = await load_json(`gen/documents/${sid}/content.json`)
+const tree = await load_json(`gen/documents/${sid}/tree.json`)
+---
+<AstroMarkdown node={tree} data={data_content} />
+```
+
+## features
+* renders pure markdown using astro components
+
+provided components templates
+* `image` : add pan zoom function
+* `heading` : adds hover and auto link anchor icon
+* `table` : add table style
+* `code` : code highlighting using [shikiji](https://github.com/antfu/shikiji)
+
+supported custom code blocks
+* `plantuml` : plantuml text to diagram library
+    * using `plantuml-encoder` to fetch image from a plantuml server
+* `mermaid` : mermaid text to diagram library
+    * local mode, using `@mermaid-js/mermaid-cli` which calls `Puppeteer`
+* `kroki` : [kroki](https://kroki.io/) text to diagram library
+    * client mode, using post request without dependencies
+
+
+## why Astro remark ?
+
 * Pure Markdown .md
 
  Not MDX nor Markdoc : The rational to sticking to the Markdown standard is leveraging the existing content base and not push authors to rewrite content. Also, a split is intended between content creation and rendering, so MDX is not required as the authors are not expected to be developpers that bring custom components.

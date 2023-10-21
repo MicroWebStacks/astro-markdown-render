@@ -8,7 +8,8 @@ const config = {
     rootdir: __dirname,
     rel_outdir: "dist",
     outDir: "dist",
-    plantuml_server: "https://www.plantuml.com/plantuml/svg"
+    plantuml_server: "https://www.plantuml.com/plantuml/svg",
+    kroki_server: "https://kroki.io",
 }
 
 export {
