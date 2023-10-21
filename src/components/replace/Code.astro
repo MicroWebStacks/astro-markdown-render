@@ -1,8 +1,5 @@
 ---
 import shiki from 'shiki';
-import { getTheme } from 'shiki-themes';
-import {toHast} from 'mdast-util-to-hast'
-import {toHtml} from 'hast-util-to-html'
 
 export interface Props {
     node: object;
@@ -18,3 +15,9 @@ const html = highlighter.codeToHtml(node.value, { lang: 'js' })
 <div>
     <Fragment set:html={html}></Fragment>
 </div>
+
+<style is:global>
+pre{
+    padding:10px;
+}
+</style>
