@@ -1,5 +1,6 @@
 ---
 import {config} from '@/config.js'
+import { diagram_cache } from './diagram.js';
 
 export interface Props {
     language: string;
@@ -9,15 +10,20 @@ export interface Props {
 
 const { language, code, params } = Astro.props as Props;
 
-const response = await fetch(`${config.kroki_server}/${language}/svg/`,{
-  method: 'POST',
-  body: code,
-  headers: {
-    'Content-Type': 'text/plain',
-  },
-})
+async function generator(code){
+  const response = await fetch(`${config.kroki_server}/${language}/svg/`,{
+    method: 'POST',
+    body: code,
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+  })
+  
+  const  svg_text = await response.text()
+  return svg_text
+}
 
-const  svg_text = await response.text()
+const svg_text = await diagram_cache(code, generator)
 
 ---
 <div>

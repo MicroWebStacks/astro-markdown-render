@@ -34,6 +34,7 @@ supported custom code blocks
 * `kroki` : [kroki](https://kroki.io/) text to diagram library
     * client mode, using post request without dependencies
 
+* Cached diagrams rendering : all diagrams generations are cached on disk with a hash which prevents re fetching or rerunning the diagram generation. convenient for development and shift generation to become incremental on subsequent builds. Although the cache has no chance to fail by using the hash, old diagrams are not deleted though so cache has to be cleaned by the user.
 
 ## why Astro remark ?
 

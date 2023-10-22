@@ -2,6 +2,7 @@ import {existsSync,copyFileSync,mkdirSync,statSync} from 'fs'
 import {promises as fs} from 'fs';
 import {resolve,dirname,join,relative} from 'path'
 import {config} from '../../config.js'
+import { createHash } from 'crypto';
 
 
 function isNewer(filepath,targetfile){
@@ -55,7 +56,32 @@ async function load_json(rel_path){
   return JSON.parse(text)
 }
 
+function generateShortMD5(text) {
+  const hash = createHash('md5').update(text, 'utf8').digest('hex');
+  return hash.substring(0, 8);
+}
+
+async function exists(filePath) {
+  try {
+    await fs.access(filePath, fs.constants.F_OK);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+async function save_file(filePath,content){
+  const directory = dirname(filePath)
+  if(!await exists(directory)){
+    await fs.mkdir(directory, { recursive: true });
+  }
+  return fs.writeFile(filePath,content)
+}
+
 export{
     relAssetToUrl,
-    load_json
+    load_json,
+    generateShortMD5,
+    exists,
+    save_file
 }
