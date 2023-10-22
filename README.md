@@ -1,7 +1,10 @@
-# Astro Remark
+# Astro Markdown Render
 render remote markdown content using Astro components with the help of remark mdast
 
 * live demo : https://astro-remark.netlify.app/
+
+<img src="https://github.com/MicroWebStacks/astro-markdown-render/assets/1510763/26ab8e27-20dd-4fb4-979a-a30e53817eb9" width="400"/>
+
 
 ## usage
 The file `[...sid].astro` uses generated content from [content-structure](https://github.com/MicroWebStacks/content-structure) markdown parser.
