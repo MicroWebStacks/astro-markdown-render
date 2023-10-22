@@ -1,6 +1,7 @@
 ---
 import {getHighlighter} from 'shikiji';
 import { generateShortMD5 } from '@/libs/utils.js';
+import Svgicons from '@/components/svgicons.astro';
 
 export interface Props {
     code: string;
@@ -19,9 +20,8 @@ const hash = generateShortMD5(code)
 ---
 <div class="highlighter container" data-hash={hash}>
     <Fragment set:html={html}></Fragment>
-    <button class="copy-btn" data-hash={hash}>Copy</button>
+    <button class="copy-btn" data-hash={hash}><Svgicons filename="copy" /></button>
 </div>
-
 <style is:global>
 pre{
     padding:10px;
@@ -37,12 +37,24 @@ pre{
     right: 5px;
     cursor: pointer;
     display: none;
+    background: transparent;
+    border-width: 1px;
+    border-color: #bbb;
+    border-radius: 3px;
+    padding: 5px;
+    outline: none;
 }
-.copy-btn::before {
-    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M8 0c-1.104 0-2 .896-2 2v16c0 1.104.896 2 2 2h12c1.104 0 2-.896 2-2v-4h-2v4h-12v-16h12v4h2v-4c0-1.104-.896-2-2-2h-12zm10 6l-6 6h3v8h6v-8h3l-6-6z"/></svg>');
-}
-
 .container:hover .copy-btn {
     display: block;
 }
+
+.copy-btn > svg{
+  height: 16px;
+  width: 16px;
+  margin:0px;
+  padding-top: 2px;
+  padding-left: 2px;
+  fill:#bbb;
+}
+
 </style>

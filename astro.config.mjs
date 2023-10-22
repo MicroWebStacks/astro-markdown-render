@@ -4,7 +4,9 @@ import {collect_content} from './integrations/integration-content-structure.js'
 
 const collect_content_config = {
     rootdir:config.rootdir,
-    rel_outdir:"gen"
+    rel_contentdir:config.content,
+    rel_outdir:config.content_out,
+    debug:true
 }
 
 export default defineConfig({

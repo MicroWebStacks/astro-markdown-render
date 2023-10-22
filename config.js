@@ -3,15 +3,15 @@ import {dirname, join} from 'path'
 
 const __filename = fileURLToPath(import.meta.url);
 let __dirname = dirname(__filename);
-
 if(import.meta.env?.MODE == "production"){
 	__dirname = join(__dirname,'../../..')
 }
 
 const config = {
     rootdir: __dirname,
-    rel_outdir: "dist",
     outDir: "dist",
+    content: "content",
+    content_out: "public",
     plantuml_server: "https://www.plantuml.com/plantuml/svg",
     kroki_server: "https://kroki.io",
 }

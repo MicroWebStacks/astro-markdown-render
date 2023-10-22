@@ -95,3 +95,6 @@ mentioned just for reference not relevant as solution but similarities in e.g. t
 ## Other projects
 * https://github.com/jonschlinkert/remarkable
 * https://github.com/jonschlinkert/markdown-toc
+
+# Assets
+* https://www.svgrepo.com/svg/173744/copy-text

@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Markdown from '../components/renderers/Marked.astro';
 import AstroMarkdown from '../components/renderers/AstroMarkdown.astro'
-import index from '../../gen/index.json'
+import index from '../../public/gen/index.json'
 import {promises as fs} from 'fs';
 import matter from 'gray-matter';
 import {load_json} from '@/libs/utils'
@@ -18,8 +18,8 @@ console.log(`path : '${path}'`)
 const text = await fs.readFile(path,'utf-8')
 const {content:md_content, data:front_matter_data} = matter(text)
 
-const data_content = await load_json(`gen/documents/${entry.sid}/content.json`)
-const tree = await load_json(`gen/documents/${entry.sid}/tree.json`)
+const data_content = await load_json(join(config.content_out,"documents",entry.sid,"content.json"))
+const tree = await load_json(join(config.content_out,"documents",entry.sid,"tree.json"))
 
 export async function getStaticPaths(){
 	return index.documents.map((entry)=>({params:{uid:entry.uid}}))

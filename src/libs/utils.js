@@ -20,7 +20,7 @@ function relAssetToUrl(relativepath,refFile){
     if(existsSync(filepath)){
       //console.log(`   * impo*rt.me*ta.ur*l = ${import.meta.url}`)
 
-      let rel_outdir = config.rel_outdir
+      let rel_outdir = config.outDir
       if(import.meta.env.MODE == "development"){
         rel_outdir = "public"
       }
