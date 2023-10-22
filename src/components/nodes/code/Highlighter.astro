@@ -1,5 +1,6 @@
 ---
 import {getHighlighter} from 'shikiji';
+import { generateShortMD5 } from '@/libs/utils.js';
 
 export interface Props {
     code: string;
@@ -14,13 +15,34 @@ const highlighter = await getHighlighter({theme:'dark-plus'})
 await highlighter.loadTheme('dark-plus')
 await highlighter.loadLanguage('js')
 const html = highlighter.codeToHtml(code, { lang: 'js', theme:'dark-plus' })
+const hash = generateShortMD5(code)
 ---
-<div>
+<div class="highlighter container" data-hash={hash}>
     <Fragment set:html={html}></Fragment>
+    <button class="copy-btn" data-hash={hash}>Copy</button>
 </div>
 
 <style is:global>
 pre{
     padding:10px;
+}
+.highlighter.container {
+    position: relative;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+.copy-btn {
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    cursor: pointer;
+    display: none;
+}
+.copy-btn::before {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M8 0c-1.104 0-2 .896-2 2v16c0 1.104.896 2 2 2h12c1.104 0 2-.896 2-2v-4h-2v4h-12v-16h12v4h2v-4c0-1.104-.896-2-2-2h-12zm10 6l-6 6h3v8h6v-8h3l-6-6z"/></svg>');
+}
+
+.container:hover .copy-btn {
+    display: block;
 }
 </style>

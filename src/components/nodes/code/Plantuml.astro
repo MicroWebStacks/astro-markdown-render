@@ -1,7 +1,8 @@
 ---
-import Highlighter from './Highlighter.astro'
 import {diagram_cache} from './diagram.js'
 import plantumlEncoder from "plantuml-encoder";
+import DiagramCode from './DiagramCode.astro'
+import {config} from '@/config.js'
 
 export interface Props {
     code: string;
@@ -17,18 +18,7 @@ async function generator(code){
     return svg_text
 }
 
-const svg_text = await diagram_cache(code, generator)
+const {svg_text,hash} = await diagram_cache(code, generator)
 ---
-<button>code/diagram</button>
-<div class="diagram">
-    <Fragment set:html={svg_text}></Fragment>
-</div>
-<div class="code">
-    <Highlighter code={code} language={"javascript"} params={params} />
-</div>
+<DiagramCode svg={svg_text} code={code} hash={hash}/>
 
-<style>
-.code{
-    width: auto;
-}
-</style>./diagram.js

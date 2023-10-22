@@ -4,6 +4,8 @@ import {promises as fs} from 'fs';
 import {join} from 'path'
 import {config} from '@/config.js'
 import { diagram_cache } from "./diagram.js";
+import DiagramCode from './DiagramCode.astro'
+
 
 export interface Props {
     code: string;
@@ -21,8 +23,6 @@ async function generator(code){
     return svg_text
 }
 
-const svg_text = await diagram_cache(code, generator)
+const {svg_text,hash} = await diagram_cache(code, generator)
 ---
-<div>
-    <Fragment set:html={svg_text}></Fragment>
-</div>
+<DiagramCode svg={svg_text} code={code} hash={hash}/>
