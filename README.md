@@ -24,7 +24,7 @@ provided components templates
 * `image` : add pan zoom function
 * `heading` : adds hover and auto link anchor icon
 * `table` : add table style
-* `code` : code highlighting using [shikiji](https://github.com/antfu/shikiji)
+* `code` : code highlighting with VSCode style using [shikiji](https://github.com/antfu/shikiji)
 
 supported custom code blocks
 * `plantuml` : plantuml text to diagram library
