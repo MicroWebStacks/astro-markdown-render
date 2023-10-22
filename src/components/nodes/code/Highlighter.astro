@@ -58,3 +58,24 @@ pre{
 }
 
 </style>
+
+<script>
+const buttons = document.querySelectorAll('button.copy-btn');
+buttons.forEach(button => {
+    button.addEventListener('click', async () => {
+        const hash = button.getAttribute('data-hash');
+        try {
+            const response = await fetch(`/diagrams/${hash}/code.puml`);
+            if (response.ok) {
+                const codeText = await response.text();
+                await navigator.clipboard.writeText(codeText);
+                alert('Code copied to clipboard!'); // Notify the user (optional)
+            } else {
+                console.error('Failed to fetch code content');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    })
+});
+</script>

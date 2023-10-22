@@ -16,7 +16,7 @@ async function diagram_cache(code,generator){
         const svg_text = await generator(code)
         await save_file(file_path,svg_text)
         const code_path = join(config.rootdir,config.content_out,"diagrams",hash,"code.puml")
-        await save_file(code_path,svg_text)
+        await save_file(code_path,code)
         return {svg_text, hash}
     }
 }
