@@ -3,7 +3,12 @@ render remote markdown content using Astro components with the help of remark md
 
 * live demo : https://astro-remark.netlify.app/
 
-<img src="https://github.com/MicroWebStacks/astro-markdown-render/assets/1510763/26ab8e27-20dd-4fb4-979a-a30e53817eb9" width="400"/>
+<picture>
+  <source srcset="./media/astro-markdown-render.webp" media="(min-width: 800px)">
+  <source srcset="./media/astro-markdown-render-medium.webp" media="(min-width: 400px)">
+  <img src="./media/astro-markdown-render-small.webp" alt="A description">
+</picture>
+Astro-Remote-Markdown Dall.E3 Chat-GPT4
 
 
 ## usage
