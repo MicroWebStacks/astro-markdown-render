@@ -4,7 +4,7 @@ render remote markdown content using Astro components with the help of remark md
 * live demo : https://astro-remark.netlify.app/
 
 <img src="./media/astro-markdown-render-small.webp" alt="Astro Markdown Render" width=400px>
-Astro-Remote-Markdown Dall.E3 Chat-GPT4
+Astro-Remote-Markdown image generated with Dall.E3 Chat-GPT4
 
 
 ## usage
@@ -33,10 +33,11 @@ provided components templates
 supported custom code blocks
 * `plantuml` : plantuml text to diagram library
     * using `plantuml-encoder` to fetch image from a plantuml server
-* `mermaid` : mermaid text to diagram library
-    * local mode, using `@mermaid-js/mermaid-cli` which calls `Puppeteer`
 * `kroki` : [kroki](https://kroki.io/) text to diagram library
     * client mode, using post request without dependencies
+* `mermaid` : mermaid text to diagram library
+    * local mode, using `@mermaid-js/mermaid-cli` which calls `Puppeteer` as a dependency fails on e.g. Netlify
+    * fallback on using mermaid through Kroki server
 
 * Cached diagrams rendering : all diagrams generations are cached on disk with a hash which prevents re fetching or rerunning the diagram generation. convenient for development and shift generation to become incremental on subsequent builds. Although the cache has no chance to fail by using the hash, old diagrams are not deleted though so cache has to be cleaned by the user.
 

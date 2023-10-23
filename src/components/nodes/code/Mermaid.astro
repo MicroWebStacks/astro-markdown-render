@@ -1,11 +1,4 @@
 ---
-import { run } from "@mermaid-js/mermaid-cli";
-import {promises as fs} from 'fs';
-import {join} from 'path'
-import {config} from '@/config.js'
-import { diagram_cache } from "./diagram.js";
-import DiagramCode from './DiagramCode.astro'
-
 
 export interface Props {
     code: string;
@@ -14,17 +7,17 @@ export interface Props {
 
 const { code, params } = Astro.props as Props;
 
-async function generator(code){
-    const temp_file = join(config.rootdir,config.content_out,"temp.mmd")
-    await fs.writeFile(temp_file,code)
-    const out_file = join(config.rootdir,config.content_out,"mmd.svg")
-    await run(temp_file, out_file);
-    const svg_text = await fs.readFile(out_file,'utf-8')
-    await fs.unlink(temp_file)
-    await fs.unlink(out_file)
-    return svg_text
-}
+const response = await fetch("https://mermaid.live/svg/",{
+  method: 'POST',
+  body: JSON.stringify({ code: code }),
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
 
-const {svg_text,hash} = await diagram_cache(code, generator)
+const  svg_text = await response.text()
+
 ---
-<DiagramCode svg={svg_text} code={code} hash={hash}/>
+<div>
+    <Fragment set:html={svg_text}></Fragment>
+</div>

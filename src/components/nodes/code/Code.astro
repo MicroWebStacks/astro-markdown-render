@@ -25,7 +25,7 @@ console.log(language)
     <Kroki language={language} code={code} params={params} />
 }
 {(language == "mermaid")&&
-    <Mermaid code={code} params={params} />
+    <Kroki language="mermaid" code={code} params={params} />
 }
 {other_language&&
     <Highlighter code={code} language={language} params={params} />
