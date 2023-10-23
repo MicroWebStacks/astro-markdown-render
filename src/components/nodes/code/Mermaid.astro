@@ -20,6 +20,8 @@ async function generator(code){
     const out_file = join(config.rootdir,config.content_out,"mmd.svg")
     await run(temp_file, out_file);
     const svg_text = await fs.readFile(out_file,'utf-8')
+    await fs.unlink(temp_file)
+    await fs.unlink(out_file)
     return svg_text
 }
 
