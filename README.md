@@ -12,13 +12,14 @@ The file `[...sid].astro` uses generated content from [content-structure](https:
 
 ```js
 ---
-const {sid} = Astro.params;
+import {getEntry} from 'content-structure'
 import AstroMarkdown from '@/components/renderers/AstroMarkdown.astro'
 
-const data_content = await load_json(`gen/documents/${sid}/content.json`)
-const tree = await load_json(`gen/documents/${sid}/tree.json`)
+const {uid} = Astro.params;
+const entry = await getEntry({uid:uid})
+
 ---
-<AstroMarkdown node={tree} data={data_content} />
+<AstroMarkdown node={entry.tree} data={entry.data} />
 ```
 
 ## features
