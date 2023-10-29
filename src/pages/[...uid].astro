@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Markdown from '../components/renderers/Marked.astro';
 import AstroMarkdown from '../components/renderers/AstroMarkdown.astro'
-import index from '../../public/index.json'
+import documents from '../../public/index.json'
 import {promises as fs} from 'fs';
 import matter from 'gray-matter';
 import {load_json} from '@/libs/utils'
@@ -11,7 +11,7 @@ import {join} from 'path'
 
 const {uid} = Astro.params;
 console.log(`in [...uid] > uid = ${uid}`)
-const entry = index.documents.filter((entry)=>(entry.uid == uid))[0]
+const entry = documents.filter((entry)=>(entry.uid == uid))[0]
 console.log(`entry.path : '${entry.path}'`)
 const path = join(config.rootdir,`content/${entry.path}`)
 console.log(`path : '${path}'`)
@@ -22,7 +22,7 @@ const data_content = await load_json(join(config.content_out,"documents",entry.s
 const tree = await load_json(join(config.content_out,"documents",entry.sid,"tree.json"))
 
 export async function getStaticPaths(){
-	return index.documents.map((entry)=>({params:{uid:entry.uid}}))
+	return documents.map((entry)=>({params:{uid:entry.uid}}))
 }
 
 ---

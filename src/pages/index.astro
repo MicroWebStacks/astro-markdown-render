@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import index from '../../public/index.json'
+import {get_documents} from 'content-structure'
+
+const documents = await get_documents({format:"markdown"})
 
 ---
 
@@ -14,7 +16,7 @@ import index from '../../public/index.json'
 			<p>remote markdown using Remark Abstract Syntax Tree</p>
 		</div>
 		<ul>
-			{index.documents.map((entry)=>(
+			{documents.map((entry)=>(
 				<li>
 					<a href={entry.uid}>{entry.title}</a>
 				</li>
