@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@svgdotjs/svg.js": "^3.2.0",
-    "content-structure": "^0.5.2",
+    "content-structure": "^0.6.0",
     "gray-matter": "^4.0.3",
     "hast-util-to-html": "^9.0.0",
     "marked": "^9.1.0",

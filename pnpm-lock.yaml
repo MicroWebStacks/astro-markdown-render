@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.2.0
     version: 3.2.0
   content-structure:
-    specifier: ^0.5.2
-    version: 0.5.2
+    specifier: ^0.6.0
+    version: 0.6.0
   gray-matter:
     specifier: ^4.0.3
     version: 4.0.3
@@ -1295,8 +1295,8 @@ packages:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
     dev: true
 
-  /content-structure@0.5.2:
-    resolution: {integrity: sha512-tKY2/0gQbNdVmVwMpEMRe254CLpQbVMiqrFRq1+D7NBMVGXPfYIq4H5Yzq8MwWjfujSrMz/VjrYX03W0BpFL1Q==}
+  /content-structure@0.6.0:
+    resolution: {integrity: sha512-hrtEb9LmI6aB0FHlJ+SRzX9jTImbn09asm1/GZ2aZ9RhvT2yL9bTFBNfsu6sUP8/CIVwM9asvq0kCJSBzHyVvw==}
     dependencies:
       glob: 10.3.10
       gray-matter: 4.0.3
