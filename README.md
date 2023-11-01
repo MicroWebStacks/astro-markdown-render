@@ -76,6 +76,21 @@ Some content generation providers e.g. Mermaid, Plantuml allow already custom im
     * second option (opted for) is passing just a node and abstract all rendering logic in the component. This second otpion has the consequnce of the component being responsible to finalize all of the markdown to html rendering with the `toHtml(toHast())` utilities
 * Table : could have styed on the top renderer, taken down in a component to keep tyble related styling in a separate file
 
+## Tags
+* known identifiers : a list of keywords and their corresponding URL
+    * e.g. some wikipedia entries
+* identifier types : a list of keywords with a similar URL pattern
+    * e.g. corss pages slug referencing `test-slug-equal`
+* generic identifiers : a regex resulting the a similar URL pattern
+    * e.g. protected pages slug referencing `page:test-slug-equal`
+
+The Tags can have a cross referencing usage when used for items that have a deep path, and can result in a referenced-by section next to the object referenced.
+
+
+Tags can be linkined within Paragraphs, tables and SVG images (optionally code)
+
+
+
 # References
 * marked docs : https://marked.js.org/using_advanced
 

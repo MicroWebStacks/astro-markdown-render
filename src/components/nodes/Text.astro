@@ -1,0 +1,19 @@
+---
+export interface Props {
+    node: object;
+}
+
+const {node} = Astro.props;
+
+function tag_match_page(value) {
+    const regex = /page::(\w+)/g;
+    let updatedValue = value.replace(regex, (match, p1) => {
+    return `<a href="/${p1}">${p1}</a>`;
+  });
+  return updatedValue
+}
+
+const text_with_links = tag_match_page(node.value)
+
+---
+<Fragment set:html={text_with_links}></Fragment>
