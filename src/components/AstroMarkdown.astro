@@ -27,11 +27,11 @@ const other_type = !handled_types.includes(node.type)
     </>
 }
 {(node.type == "paragraph") &&
-<p>
+<div class="paragraph">
     {node.children.map((node)=>(
         <Astro.self node={node} data={data}/>
     ))}
-</p>
+</div>
 }
 {(node.type == "list") &&
 <ul>
@@ -63,7 +63,7 @@ const other_type = !handled_types.includes(node.type)
     <Tag node={node}  />
 }
 {(node.type == "link") &&
-    <Link node={node}  />
+    <Link node={node}  filepath={data.path}/>
 }
 {other_type &&
     <Fragment set:html={toHtml(toHast(node))}></Fragment>

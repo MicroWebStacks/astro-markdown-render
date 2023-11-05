@@ -1,24 +1,36 @@
 ---
+import {relAssetToUrl} from '@/libs/utils'
 import {toHast} from 'mdast-util-to-hast'
 import {toHtml} from 'hast-util-to-html'
 import ModelViewer from './model/ModelViewer.astro';
 
 export interface Props {
     node: object;
+    filepath: string;
 }
 
-const {node} = Astro.props;
+const { node, filepath} = Astro.props as Props;
 
-const external = !node.url.startsWith('/')
+const external = node.url.startsWith('http')
 console.log(`* link '${node.url}' (external:${external}) `)
-
+let src = node.url
+if(!external){
+  if(!node.url.startsWith("/")){
+    src = relAssetToUrl(node.url,filepath)
+  }
+}
 const is_model3d = node.url.endsWith(".glb")
+
+let title = ""
+if((node.children.length>0)&&(node.children[0].type == "text")){
+  title = node.children[0].value
+}
 
 ---
 {is_model3d?
-  <ModelViewer src={node.url} alt="" title="" />
+  <ModelViewer src={src} title={title} />
   :
-  <a href={node.url} class={`link ${external?"external":""}`} target={external?"_blank":"_self"}>
+  <a href={src} class={`link ${external?"external":""}`} target={external?"_blank":"_self"}>
         {node.children.map((node)=>(
           <Fragment set:html={toHtml(toHast(node))}></Fragment>
         ))}
