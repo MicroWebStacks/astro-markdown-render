@@ -1,0 +1,45 @@
+---
+import {toHast} from 'mdast-util-to-hast'
+import {toHtml} from 'hast-util-to-html'
+import ModelViewer from './model/ModelViewer.astro';
+
+export interface Props {
+    node: object;
+}
+
+const {node} = Astro.props;
+
+const external = !node.url.startsWith('/')
+console.log(`* link '${node.url}' (external:${external}) `)
+
+const is_model3d = node.url.endsWith(".glb")
+
+---
+{is_model3d?
+  <ModelViewer src={node.url} alt="" title="" />
+  :
+  <a href={node.url} class={`link ${external?"external":""}`} target={external?"_blank":"_self"}>
+        {node.children.map((node)=>(
+          <Fragment set:html={toHtml(toHast(node))}></Fragment>
+        ))}
+  </a>
+}
+
+<style>
+a{
+    color:rgb(38, 102, 166)
+}
+.link {
+  position: relative;
+  display: inline-block;
+}
+.external{
+  margin-right: 6px;
+}
+.external::after {
+  content: '\2197';
+  position: absolute;
+  top: -0.5em;  /* Adjust this value to move the arrow up or down */
+  right: -0.7em;  /* Adjust this value to move the arrow left or right */
+}
+</style>

@@ -6,7 +6,10 @@ const collect_content_config = {
     rootdir:config.rootdir,
     rel_contentdir:config.content,
     rel_outdir:config.content_out,
-    debug:true
+    debug:true,
+    tags:{
+        page:'page::(\\w+)'
+    }
 }
 
 export default defineConfig({

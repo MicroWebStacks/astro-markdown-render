@@ -1,9 +1,10 @@
 ---
-import Heading from '../nodes/Heading.astro';
-import Table from '../nodes/Table.astro'
-import Image from '../nodes/image/Image.astro'
-import Code from '../nodes/code/Code.astro'
-import Tag from '../nodes/Tag.astro'
+import Heading from './nodes/Heading.astro';
+import Table from './nodes/Table.astro'
+import Image from './nodes/image/Image.astro'
+import Code from './nodes/code/Code.astro'
+import Tag from './nodes/Tag.astro'
+import Link from './nodes/Link.astro'
 import {toHast} from 'mdast-util-to-hast'
 import {toHtml} from 'hast-util-to-html'
 export interface Props {
@@ -12,7 +13,10 @@ export interface Props {
 }
 
 const {node, data} = Astro.props;
-const handled_types = ["root","heading","table","paragraph","image","code","tag"]
+const handled_types = [ "root","heading","table","paragraph",
+                        "image","code","tag","link",
+                        "list", "listItem"
+                    ]
 const other_type = !handled_types.includes(node.type)
 ---
 {(node.type == "root") &&
@@ -29,6 +33,20 @@ const other_type = !handled_types.includes(node.type)
     ))}
 </p>
 }
+{(node.type == "list") &&
+<ul>
+    {node.children.map((node)=>(
+        <Astro.self node={node} data={data}/>
+    ))}
+</ul>
+}
+{(node.type == "listItem") &&
+<li>
+    {node.children.map((node)=>(
+        <Astro.self node={node} data={data}/>
+    ))}
+</li>
+}
 {(node.type == "heading") &&
     <Heading node={node} headings={data.headings}/>
 }
@@ -43,6 +61,9 @@ const other_type = !handled_types.includes(node.type)
 }
 {(node.type == "tag") &&
     <Tag node={node}  />
+}
+{(node.type == "link") &&
+    <Link node={node}  />
 }
 {other_type &&
     <Fragment set:html={toHtml(toHast(node))}></Fragment>

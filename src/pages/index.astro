@@ -1,20 +1,24 @@
 ---
+import AstroMarkdown from '@/components/AstroMarkdown.astro';
 import Layout from '../layouts/Layout.astro';
-import {getDocuments} from 'content-structure'
+import {getDocuments, getEntry} from 'content-structure'
 
 const documents = await getDocuments({format:"markdown"})
+
+const mainEntry = await getEntry({uid:"main"})
 
 ---
 
 <Layout title="Astro Remark">
-	<main>
-		<h1>Astro remote <span class="text-gradient">REMARK</span></h1>
+		<h1>Astro <span class="text-gradient">Markdown</span> Render</h1>
 		<div class="link">
-			<a href="https://github.com/MicroWebStacks/astro-remark" target="_blank">open 'astro-remark' project in github</a>
+			<a href="https://github.com/MicroWebStacks/astro-markdown-render" target="_blank">open 'astro-markdown-render' project in github</a>
 		</div>
 		<div class="instructions">
-			<p>remote markdown using Remark Abstract Syntax Tree</p>
+			<p>Render remote markdown with Astro components using Remark Abstract Syntax Tree (AST)</p>
+			<p>Below are examples of unit test pages</p>
 		</div>
+
 		<ul>
 			{documents.map((entry)=>(
 				<li>
@@ -22,7 +26,11 @@ const documents = await getDocuments({format:"markdown"})
 				</li>
 			))}
 		</ul>
-	</main>
+		<div class="instructions">
+			<p>This is the rendering of the 'main' examples page</p>
+			<hr/>
+			<AstroMarkdown node={mainEntry.tree} data={mainEntry.data} />
+		</div>
 </Layout>
 
 <style>
@@ -30,11 +38,6 @@ const documents = await getDocuments({format:"markdown"})
 		margin: 20px;
 		width: 100%;
 		text-align: center;
-	}
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 65ch;
 	}
 	h1 {
 		font-size: 3rem;

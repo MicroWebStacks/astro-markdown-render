@@ -40,7 +40,15 @@ supported custom code blocks
     * local mode, using `@mermaid-js/mermaid-cli` which calls `Puppeteer` as a dependency fails on e.g. Netlify
     * fallback on using mermaid through Kroki server
 
+other
+* .glb link to 3D Model vieweing with [Mode Viewer](https://modelviewer.dev/)
+
+
 * Cached diagrams rendering : all diagrams generations are cached on disk with a hash which prevents re fetching or rerunning the diagram generation. convenient for development and shift generation to become incremental on subsequent builds. Although the cache has no chance to fail by using the hash, old diagrams are not deleted though so cache has to be cleaned by the user.
+
+## ideas
+* switching from diagram to code block should keep the top button at the same location and either shift what is down or keep the same vertical height between code and diagram to prevent any vertical shift.
+* issue: Biggest company in mermaid diagram is truncated by Kroki renderer, does not happen with mermaid renderer
 
 ## why Astro remark ?
 
@@ -75,6 +83,8 @@ Some content generation providers e.g. Mermaid, Plantuml allow already custom im
     * first option is passing a recursively rendered content in a slot
     * second option (opted for) is passing just a node and abstract all rendering logic in the component. This second otpion has the consequnce of the component being responsible to finalize all of the markdown to html rendering with the `toHtml(toHast())` utilities
 * Table : could have styed on the top renderer, taken down in a component to keep tyble related styling in a separate file
+
+* recursivity : think of falling back to the AstroMarkdown within components instead of `<Fragment set:html={toHtml(toHast(node))}></Fragment>`
 
 ## Tags
 * known identifiers : a list of keywords and their corresponding URL
