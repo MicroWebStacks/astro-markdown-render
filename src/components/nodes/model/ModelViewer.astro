@@ -6,7 +6,7 @@ export interface Props {
   title: string;
 }
 
-const { src, title=null } = Astro.props as Props;
+const { src, title} = Astro.props as Props;
 
 
 ---
@@ -20,12 +20,10 @@ const { src, title=null } = Astro.props as Props;
   alt={title}
   src={src}
   shadow-intensity="1" 
-  camera-controls 
+  camera-controls
   touch-action="pan-y"
   >
 </model-viewer>
-
-
 
 <script>
   import '@google/model-viewer';

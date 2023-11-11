@@ -50,6 +50,17 @@ function relAssetToUrl(relativepath,refFile){
     return newurl
 }
 
+function assetToUrl(path,refFile){
+  const external = path.startsWith('http')
+  let src = path
+  if(!external){
+    if(!path.startsWith("/")){
+      src = relAssetToUrl(path,refFile)
+    }
+  }
+  return src
+}
+
 async function load_json(rel_path){
   const path = join(config.rootdir,rel_path)
   const text = await fs.readFile(path,'utf-8')
@@ -78,10 +89,19 @@ async function save_file(filePath,content){
   return fs.writeFile(filePath,content)
 }
 
+async function load_yaml(rel_path){
+  const path = join(config.rootdir,rel_path)
+  const fileContent = await fs.readFile(path,'utf-8')
+  const data = yaml.load(fileContent);
+  return data;
+}
+
 export{
+    assetToUrl,
     relAssetToUrl,
     load_json,
     generateShortMD5,
     exists,
-    save_file
+    save_file,
+    load_yaml
 }

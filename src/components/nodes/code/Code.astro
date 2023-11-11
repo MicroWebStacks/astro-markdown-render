@@ -2,19 +2,24 @@
 import Highlighter from './Highlighter.astro'
 import Plantuml from './Plantuml.astro'
 import Kroki from './Kroki.astro'
+import ModelViewerCode from '../model/ModelViewerCode.astro';
 
 export interface Props {
     node: object;
+    filepath: object;
 }
 
-const { node } = Astro.props as Props;
+const { node, filepath } = Astro.props as Props;
 
 const code = node.value
 const language = node.lang
 const params = node.meta?node.meta.split(' '):[]
 
 const custom_languages = ["plantuml","mermaid","blockdiag"]
-const other_language = !custom_languages.includes(language)
+
+const yaml_glb = ((language == "yaml") && (node.meta?.startsWith("glb")))
+
+const other_language = (!custom_languages.includes(language) && !yaml_glb)
 console.log(language)
 ---
 {(language == "plantuml")&&
@@ -25,6 +30,9 @@ console.log(language)
 }
 {(language == "mermaid")&&
     <Kroki language="mermaid" code={code} params={params} />
+}
+{yaml_glb &&
+    <ModelViewerCode code={code} filepath={filepath}/>
 }
 {other_language&&
     <Highlighter code={code} language={language} params={params} />

@@ -73,13 +73,35 @@ blockdiag {
 
 
 # 3D Model viewer
+[Model Viewer](https://modelviewer.dev/) Makrdown plugin
+
+models from https://modelviewer.dev/editor/
+
 ## with a link
 just by inserting a link to a .glb file
 
+```markdown
+[Astronaut](./Astronaut.glb)
 ```
-[Turtle Flower](./trtl_flower.glb)
-```
-will generate this 3D [Model Viewer](https://modelviewer.dev/)
+will generate this 3D model
 
-[Turtle Flower](./trtl_flower.glb)
+[Astronaut](./Astronaut.glb)
+
+
+## with code
+This piece of code using as code language `yaml` and code meta-data : `glb` as follows
+
+
+![Code](./code.png)
+
+will generate this 3D model with the provided files.
+* poster : allows fast page load, by loading the image only first.
+* environment-image : for lighting effect
+
+```yaml glb
+src: Lantern.glb
+title: Lantern
+poster: Lantern.webp
+environment-image: spruit_sunrise_1k_HDR.hdr
+```
 

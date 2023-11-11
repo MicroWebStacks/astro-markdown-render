@@ -1,6 +1,6 @@
 ---
 import {config} from '@/config.js'
-import {getHighlighter} from 'shikiji';
+import {bundledLanguages, getHighlighter} from 'shikiji';
 import { save_file, generateShortMD5 } from '@/libs/utils.js';
 import Svgicons from '@/components/svgicons.astro';
 import {join} from 'path'
@@ -16,8 +16,18 @@ const { code, language, params } = Astro.props as Props;
 const highlighter = await getHighlighter({theme:'dark-plus'})
 
 await highlighter.loadTheme('dark-plus')
-await highlighter.loadLanguage('js')
-const html = highlighter.codeToHtml(code, { lang: 'js', theme:'dark-plus' })
+
+
+let lang = language
+if(!Object.keys(bundledLanguages).includes(language)){
+    console.warn(` (X) ${language} is not available, fall back on js`)
+    lang = 'js'
+}
+if (!highlighter.getLoadedLanguages().includes(lang)) {
+    await highlighter.loadLanguage(lang)
+}
+
+const html = highlighter.codeToHtml(code, { lang: lang, theme:'dark-plus' })
 const hash = generateShortMD5(code)
 const file_path = join(config.rootdir,config.content_out,"codes",hash,"code.txt")
 await save_file(file_path,code)
