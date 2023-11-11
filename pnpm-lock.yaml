@@ -14,6 +14,9 @@ dependencies:
   content-structure:
     specifier: ^0.6.3
     version: 0.6.3
+  datatables.net-dt:
+    specifier: ^1.13.7
+    version: 1.13.7
   gray-matter:
     specifier: ^4.0.3
     version: 4.0.3
@@ -41,6 +44,9 @@ dependencies:
   shikiji:
     specifier: ^0.6.10
     version: 0.6.10
+  xlsx:
+    specifier: https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz
+    version: '@cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz'
 
 devDependencies:
   astro:
@@ -1378,6 +1384,19 @@ packages:
       whatwg-url: 12.0.1
     dev: false
 
+  /datatables.net-dt@1.13.7:
+    resolution: {integrity: sha512-7ZnM9zTzuKrolSN7eLGDfjX2sid7KJOq1IWTfK9qOqP/MOHFYZbmoIddpN4TpINgTL+nmJJeydxWTEo1RAvYnA==}
+    dependencies:
+      datatables.net: 1.13.7
+      jquery: 3.7.1
+    dev: false
+
+  /datatables.net@1.13.7:
+    resolution: {integrity: sha512-lbmcCSrMU8VTaGwgCxWs/jbP8NVJlzXaUkK3SiiZY7tTjRp7XJw4InlOU+XUVZ4i4B2GBxue02/P5iVto1CGDg==}
+    dependencies:
+      jquery: 3.7.1
+    dev: false
+
   /debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -2134,6 +2153,10 @@ packages:
       '@isaacs/cliui': 8.0.2
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
+    dev: false
+
+  /jquery@3.7.1:
+    resolution: {integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==}
     dev: false
 
   /js-tokens@4.0.0:
@@ -4535,3 +4558,11 @@ packages:
 
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
+
+  '@cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz':
+    resolution: {tarball: https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz}
+    name: xlsx
+    version: 0.20.0
+    engines: {node: '>=0.8'}
+    hasBin: true
+    dev: false

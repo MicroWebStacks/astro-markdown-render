@@ -3,6 +3,7 @@ import {relAssetToUrl} from '@/libs/utils'
 import {toHast} from 'mdast-util-to-hast'
 import {toHtml} from 'hast-util-to-html'
 import ModelViewer from './model/ModelViewer.astro';
+import TableXLSX from './table/TableXLSX.astro';
 
 export interface Props {
     node: object;
@@ -20,16 +21,21 @@ if(!external){
   }
 }
 const is_model3d = node.url.endsWith(".glb")
-
+const is_table = node.url.endsWith(".xlsx")
+const is_link = !is_model3d && !is_table
 let title = ""
 if((node.children.length>0)&&(node.children[0].type == "text")){
   title = node.children[0].value
 }
 
 ---
-{is_model3d?
+{is_model3d &&
   <ModelViewer src={src} title={title} />
-  :
+}
+{is_table &&
+  <TableXLSX src={node.url} title={title} filepath={filepath} />
+}
+{is_link &&
   <a href={src} class={`link ${external?"external":""}`} target={external?"_blank":"_self"}>
         {node.children.map((node)=>(
           <Fragment set:html={toHtml(toHast(node))}></Fragment>

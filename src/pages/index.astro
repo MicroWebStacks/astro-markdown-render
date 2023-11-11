@@ -15,9 +15,9 @@ const mainEntry = await getEntry({uid:"main"})
 			<a href="https://github.com/MicroWebStacks/astro-markdown-render" target="_blank">open 'astro-markdown-render' project in github</a>
 		</div>
 		<div class="instructions">
-			<p>Render remote markdown with Astro components using Remark Abstract Syntax Tree (AST)</p>
-			<p>Below are examples of unit test pages</p>
+			<p>Markdown for the modern Era. Render multiple interactive elements directly from Markdown</p>
 		</div>
+		<p>Below are examples of unit test pages</p>
 
 		<ul>
 			{documents.map((entry)=>(
@@ -26,9 +26,8 @@ const mainEntry = await getEntry({uid:"main"})
 				</li>
 			))}
 		</ul>
+		<p>This is the rendering of the 'main' examples page</p>
 		<div class="instructions">
-			<p>This is the rendering of the 'main' examples page</p>
-			<hr/>
 			<AstroMarkdown node={mainEntry.tree} data={mainEntry.data} />
 		</div>
 </Layout>

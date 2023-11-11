@@ -14,6 +14,7 @@
     "@google/model-viewer": "^3.3.0",
     "@svgdotjs/svg.js": "^3.2.0",
     "content-structure": "^0.6.3",
+    "datatables.net-dt": "^1.13.7",
     "gray-matter": "^4.0.3",
     "hast-util-to-html": "^9.0.0",
     "js-yaml": "^4.1.0",
@@ -22,7 +23,8 @@
     "panzoom": "^9.4.3",
     "plantuml-encoder": "^1.4.0",
     "remark": "^15.0.1",
-    "shikiji": "^0.6.10"
+    "shikiji": "^0.6.10",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
   },
   "devDependencies": {
     "astro": "3.2.2"

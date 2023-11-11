@@ -1,6 +1,6 @@
 ---
 import Heading from './nodes/Heading.astro';
-import Table from './nodes/Table.astro'
+import DataTable from './nodes/table/DataTable.astro'
 import Image from './nodes/image/Image.astro'
 import Code from './nodes/code/Code.astro'
 import Tag from './nodes/Tag.astro'
@@ -51,7 +51,7 @@ const other_type = !handled_types.includes(node.type)
     <Heading node={node} headings={data.headings}/>
 }
 {(node.type == "table") &&
-    <Table node={node} />
+    <DataTable node={node} />
 }
 {(node.type == "image") &&
     <Image node={node}  filepath={data.path}/>

@@ -16,7 +16,7 @@ console.log(count)
 ```
 
 ## Image
-Images are encapsulated inside a component that can open them in a Modal full view.
+Images are encapsulated inside a component that can open them in a Modal full view for Pan and zoom function.
 
 ![astro markdown render](./astro-markdown-render-small.webp)
 
@@ -24,18 +24,59 @@ Images are encapsulated inside a component that can open them in a Modal full vi
 
 ![Tree](./tree.svg)
 
-## Table
-Tables can get a custom style or be passed to custom tables components
-
-| Column 1 | Column 2 |
-|----------|----------|
-| Row 1    | Row 1 c2    |
-| Row 2    | Row 2 c2   |
-
 ## Links
 * external link Astro Markdown Render [github repo](https://github.com/MicroWebStacks/astro-markdown-render) link is external and opens in a new page.
 
 * Link to the [Image](/image) entry opens in the same page
+
+# Tables
+## Markdown Simple Table
+
+A markdown table like this one
+
+```markdown
+| Column 1 | Column 2 |
+|----------|----------|
+| Row 1    | Row 1 c2 |
+| Row 2    | Row 2 c2 |
+```
+
+is a table that has a low number of lines and therfore gets a simple table view
+
+| Column 1 | Column 2 |
+|----------|----------|
+| Row 1    | Row 1 c2 |
+| Row 2    | Row 2 c2 |
+
+## Markdown Data Table
+A table with a high number of lines gets a [data-table](https://datatables.net/) element with filter and pagination
+
+| Name   | Age | City         |
+|--------|-----|--------------|
+| Johnny | 36  | New York     |
+| John   | 30  | New York     |
+| Jane   | 28  | Los Angeles  |
+| Janny  | 22  | Los Angeles  |
+| Marc   | 28  | Los Angeles  |
+| Marco  | 21  | Bahamas      |
+| Joanna | 29  | New York     |
+| Joanna | 29  | Los Angeles  |
+| Alice  | 32  | Miami        |
+| Bob    | 27  | Seattle      |
+| Clara  | 33  | Chicago      |
+| Dave   | 24  | Houston      |
+| Ella   | 26  | Atlanta      |
+
+
+## XLSX Table
+It is also possible to create tables in xlsx format. This link of `.xlsx` extension
+
+```markdown
+[Table1](./Table1.xlsx)
+```
+will generate this table
+
+[Table1](./Table1.xlsx)
 
 # Diagrams from code
 This is a concept where diagrams are generated from a code block that witholds the description needed to generate them. Note these sorts of diagrams are much more informative for automation and LLMs processing than usual bitmaps or vectorial images.
@@ -104,4 +145,3 @@ title: Lantern
 poster: Lantern.webp
 environment-image: spruit_sunrise_1k_HDR.hdr
 ```
-
