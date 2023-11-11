@@ -37,7 +37,7 @@ Tables can get a custom style or be passed to custom tables components
 
 * Link to the [Image](/image) entry opens in the same page
 
-# Code from diagrams
+# Diagrams from code
 This is a concept where diagrams are generated from a code block that witholds the description needed to generate them. Note these sorts of diagrams are much more informative for automation and LLMs processing than usual bitmaps or vectorial images.
 
 ## Plantuml
@@ -77,7 +77,7 @@ blockdiag {
 
 models from https://modelviewer.dev/editor/
 
-## with a link
+## From a link
 just by inserting a link to a .glb file
 
 ```markdown
@@ -88,7 +88,7 @@ will generate this 3D model
 [Astronaut](./Astronaut.glb)
 
 
-## with code
+## From code
 This piece of code using as code language `yaml` and code meta-data : `glb` as follows
 
 
