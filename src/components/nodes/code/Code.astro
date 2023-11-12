@@ -20,7 +20,6 @@ const custom_languages = ["plantuml","mermaid","blockdiag"]
 const yaml_glb = ((language == "yaml") && (node.meta?.startsWith("glb")))
 
 const other_language = (!custom_languages.includes(language) && !yaml_glb)
-console.log(language)
 ---
 {(language == "plantuml")&&
     <Plantuml code={code} params={params} />

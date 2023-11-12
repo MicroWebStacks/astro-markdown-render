@@ -3,10 +3,9 @@ import {dirname, join} from 'path'
 
 const __filename = fileURLToPath(import.meta.url);
 let __dirname = dirname(__filename);
-let content_out = "public"
+console.log(`__dirname = ${__dirname} ; MODE = ${import.meta.env?.MODE}`)
 if(import.meta.env?.MODE == "production"){
 	__dirname = join(__dirname,'../../..')
-    content_out = "dist"
 }
 
 const config = {
