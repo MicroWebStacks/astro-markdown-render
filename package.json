@@ -15,7 +15,7 @@
     "@google/model-viewer": "^3.3.0",
     "@svgdotjs/svg.js": "^3.2.0",
     "astro": "^3.5.3",
-    "content-structure": "^0.6.3",
+    "content-structure": "^0.6.4",
     "datatables.net-dt": "^1.13.7",
     "gray-matter": "^4.0.3",
     "hast-util-to-html": "^9.0.0",

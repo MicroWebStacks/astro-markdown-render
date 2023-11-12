@@ -18,8 +18,8 @@ dependencies:
     specifier: ^3.5.3
     version: 3.5.3
   content-structure:
-    specifier: ^0.6.3
-    version: 0.6.3
+    specifier: ^0.6.4
+    version: 0.6.4
   datatables.net-dt:
     specifier: ^1.13.7
     version: 1.13.7
@@ -1347,8 +1347,8 @@ packages:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
     dev: false
 
-  /content-structure@0.6.3:
-    resolution: {integrity: sha512-y6ge+18jQM54o40BBrfsbWtxeLZ66J2MPHUhfeePpGRdJW3JpOaNSJIcKir40S0RTqU08nAossvoTn2Rnxlh1A==}
+  /content-structure@0.6.4:
+    resolution: {integrity: sha512-XUGnmlaL6aoegMKSBk2WsxDz0KciShBA92wLDZlKSTz3vB9kXGtHqUesB7ioTchlViuyX56gSiq80zpL6t7yrQ==}
     dependencies:
       glob: 10.3.10
       gray-matter: 4.0.3

@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url';
 import {join,basename,dirname} from 'path'
-import {collect} from 'content-structure'
+import {set_config} from 'content-structure'
 
 const output = "static"
 const __filename = fileURLToPath(import.meta.url);
@@ -38,8 +38,7 @@ config.collect_content = {
 console.log(config)
 
 if(output == "server"){
-    //could expose set_config or keep it as runtime for watch
-    await collect(config.collect_content)
+    set_config(config.collect_content)
 }
 
 export {
