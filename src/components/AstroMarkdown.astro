@@ -1,10 +1,11 @@
 ---
 import Heading from './nodes/Heading.astro';
 import DataTable from './nodes/table/DataTable.astro'
-import Image from './nodes/image/Image.astro'
+import MarkdownImage from './nodes/image/MarkdownImage.astro'
 import Code from './nodes/code/Code.astro'
 import Tag from './nodes/Tag.astro'
 import Link from './nodes/Link.astro'
+import Directive from './nodes/Directive.astro'
 import {toHast} from 'mdast-util-to-hast'
 import {toHtml} from 'hast-util-to-html'
 export interface Props {
@@ -15,7 +16,7 @@ export interface Props {
 const {node, data} = Astro.props;
 const handled_types = [ "root","heading","table","paragraph",
                         "image","code","tag","link",
-                        "list", "listItem"
+                        "list", "listItem","textDirective"
                     ]
 const other_type = !handled_types.includes(node.type)
 ---
@@ -54,7 +55,7 @@ const other_type = !handled_types.includes(node.type)
     <DataTable node={node} />
 }
 {(node.type == "image") &&
-    <Image node={node}  filepath={data.path}/>
+    <MarkdownImage node={node}  filepath={data.path}/>
 }
 {(node.type == "code") &&
     <Code node={node}  filepath={data.path}/>
@@ -64,6 +65,9 @@ const other_type = !handled_types.includes(node.type)
 }
 {(node.type == "link") &&
     <Link node={node}  filepath={data.path}/>
+}
+{(node.type == "textDirective") &&
+    <Directive node={node}  filepath={data.path}/>
 }
 {other_type &&
     <Fragment set:html={toHtml(toHast(node))}></Fragment>

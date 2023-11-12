@@ -23,6 +23,7 @@
     "panzoom": "^9.4.3",
     "plantuml-encoder": "^1.4.0",
     "remark": "^15.0.1",
+    "sharp": "^0.32.6",
     "shikiji": "^0.6.10",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
   },

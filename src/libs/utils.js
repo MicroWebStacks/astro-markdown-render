@@ -61,6 +61,14 @@ function assetToUrl(path,refFile){
   return src
 }
 
+function assetUrlToPath(src){
+  let rel_outdir = config.outDir
+  if(import.meta.env.MODE == "development"){
+    rel_outdir = "public"
+  }
+  return join(config.rootdir,rel_outdir,src)
+}
+
 async function load_json(rel_path){
   const path = join(config.rootdir,rel_path)
   const text = await fs.readFile(path,'utf-8')
@@ -99,6 +107,7 @@ async function load_yaml(rel_path){
 export{
     assetToUrl,
     relAssetToUrl,
+    assetUrlToPath,
     load_json,
     generateShortMD5,
     exists,
