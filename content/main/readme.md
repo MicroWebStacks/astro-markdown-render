@@ -171,7 +171,7 @@ poster: Lantern.webp
 environment-image: spruit_sunrise_1k_HDR.hdr
 ```
 # References
-
+## simple reference
 this is how you can reference a page
 
 ```markdown
@@ -181,9 +181,15 @@ will produce this
 
 Link to page::svg-image
 
-Example for deep folder page, the slug is enough to link the full url
+## deep path reference
+Althoguh this referenced slug is from the file `folder\image-svg-2`, the slug `image-svg-2` is enough to reference it like this
+
+```markdown
+Link to page::image-svg-2
+```
+
+will link the correct url
 
 Link to page::image-svg-2
 
-Note the url is defined as `folder.image-svg-2` but could also be `folder/image-svg-2`
-
+Note the url for deep path separatro used is '.' as `folder.image-svg-2` but could also be '/' as `folder/image-svg-2`
