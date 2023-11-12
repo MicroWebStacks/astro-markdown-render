@@ -17,8 +17,11 @@ const mainEntry = await getEntry({uid:"main"})
 		<div class="instructions">
 			<p>Markdown for the modern Era. Render multiple interactive elements directly from Markdown</p>
 		</div>
-		<p>Below are examples of unit test pages</p>
-
+		<p>This is the rendering of the 'main' examples page</p>
+		<div class="instructions">
+			<AstroMarkdown node={mainEntry.tree} data={mainEntry.data} />
+		</div>
+		<p>Below are further unit test examples pages</p>
 		<ul>
 			{documents.map((entry)=>(
 				<li>
@@ -26,10 +29,6 @@ const mainEntry = await getEntry({uid:"main"})
 				</li>
 			))}
 		</ul>
-		<p>This is the rendering of the 'main' examples page</p>
-		<div class="instructions">
-			<AstroMarkdown node={mainEntry.tree} data={mainEntry.data} />
-		</div>
 </Layout>
 
 <style>

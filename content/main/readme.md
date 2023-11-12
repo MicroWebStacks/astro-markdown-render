@@ -3,28 +3,53 @@ title: Main Examples
 slug: main
 ---
 
-# Simple examples
 this page illustrates all use cases supported in this project.
 
 Note, all headings get anchors and generate links
 
-## code block
+# Code block
+
 The code block offers a `copy` button visible on hover over the code.
+
+javascript
 ```js
 const count = 0
 console.log(count)
 ```
+python
+```python
+for item in my_list:
+  print(item)
+```
 
-## Image
-Images are encapsulated inside a component that can open them in a Modal full view for Pan and zoom function.
+# Images
+## Simple Image link
+Images are encapsulated inside a component that can open them in a Modal full view for Pan and zoom function and optimize them b e.g. generating webp from png
 
-![astro markdown render](./astro-markdown-render-small.webp)
+```markdown
+![astro markdown render](./astro-markdown-render-small.png)
+```
+
+will generate this image
+
+![astro markdown render](./astro-markdown-render-small.png)
+
+## Advanced Image Directive
+In order to give more options to the optimizer, using the image directive allows to pass more arguments from markdown
+
+```markdown
+:image[]{src=./astro-markdown-render-small.png alt="Astro Markdown Render" height=200}
+```
+
+will generate this image height adjusted image with respect to the aspect ratio
+
+:image[]{src=./astro-markdown-render-small.png alt="Astro Markdown Render" height=200}
 
 ## SVG Image
 
 ![Tree](./tree.svg)
 
-## Links
+# Links
 * external link Astro Markdown Render [github repo](https://github.com/MicroWebStacks/astro-markdown-render) link is external and opens in a new page.
 
 * Link to the [Image](/image) entry opens in the same page
