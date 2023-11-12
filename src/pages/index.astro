@@ -25,7 +25,7 @@ const mainEntry = await getEntry({uid:"main"})
 		<ul>
 			{documents.map((entry)=>(
 				<li>
-					<a href={entry.uid}>{entry.title}</a>
+					<a href={`/docs/${entry.uid}`}>{entry.title}</a>
 				</li>
 			))}
 		</ul>
