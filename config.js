@@ -1,14 +1,20 @@
 import { fileURLToPath } from 'url';
-import {dirname, join} from 'path'
+import {join,basename,dirname} from 'path'
+import {collect} from 'content-structure'
 
+const output = "static"
 const __filename = fileURLToPath(import.meta.url);
 let __dirname = dirname(__filename);
-console.log(`__dirname = ${__dirname} ; MODE = ${import.meta.env?.MODE}`)
-if(import.meta.env?.MODE == "production"){
+console.log(`__dirname = ${__dirname}`)
+if((output == "server") && (basename(__dirname) == "pages")){//identified server run mode
+    __dirname = join(__dirname,"../../../..")
+}else if(import.meta.env?.MODE == "production"){
 	__dirname = join(__dirname,'../../..')
 }
 
+
 const config = {
+    output:output,
     rootdir: __dirname,
     outDir: "dist",
     content: "content",
@@ -16,10 +22,25 @@ const config = {
     plantuml_server: "https://www.plantuml.com/plantuml/svg",
     kroki_server: "https://kroki.io",
     hashed_assets:false,
-    copy_astro:false
+    copy_astro:false,
+}
+
+config.collect_content = {
+    rootdir:config.rootdir,
+    rel_contentdir:config.content,
+    rel_outdir:config.content_out,
+    debug:true,
+    tags:{
+        page:'page::([\\w-.]+)'
+    }
 }
 
 console.log(config)
+
+if(output == "server"){
+    //could expose set_config or keep it as runtime for watch
+    await collect(config.collect_content)
+}
 
 export {
     config

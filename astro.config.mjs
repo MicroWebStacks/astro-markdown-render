@@ -1,18 +1,20 @@
 import { defineConfig } from 'astro/config';
 import {config} from './config.js'
 import {collect_content} from './integrations/integration-content-structure.js'
+import node from '@astrojs/node'
 
-const collect_content_config = {
-    rootdir:config.rootdir,
-    rel_contentdir:config.content,
-    rel_outdir:config.content_out,
-    debug:true,
-    tags:{
-        page:'page::([\\w-.]+)'
-    }
+let default_config = {
+    outDir: config.outDir,
+    output: config.output,
 }
 
-export default defineConfig({
-    outDir: config.outDir,
-    integrations: [collect_content(collect_content_config)]
-});
+if(config.output == "static"){
+    default_config.integrations= [collect_content(config.collect_content)]
+}
+
+if(config.output == "server"){
+    default_config.output = "server"
+    default_config.adapter = node({mode:'standalone'})
+}
+
+export default defineConfig(default_config);
