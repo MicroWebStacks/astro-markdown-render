@@ -2,7 +2,7 @@ import { fileURLToPath } from 'url';
 import {join,basename,dirname} from 'path'
 import {set_config} from 'content-structure'
 
-const output = "static"
+const output = "server"
 const __filename = fileURLToPath(import.meta.url);
 let __dirname = dirname(__filename);
 console.log(`__dirname = ${__dirname}`)
