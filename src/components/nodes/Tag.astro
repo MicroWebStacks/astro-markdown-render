@@ -8,7 +8,7 @@ export interface Props {
 
 const {node} = Astro.props;
 
-const entry = await getEntry({slug:node.tag_value})
+const entry = await getEntry({uid:node.tag_value})
 const url = "/"+entry.data.uid
 ---
 {(node.tag_type == "page")&&

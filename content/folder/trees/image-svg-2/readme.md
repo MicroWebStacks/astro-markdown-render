@@ -1,4 +1,4 @@
 ---
-title: SVG Image
+title: Image SVG
 ---
 ![Tree](./tree.svg)

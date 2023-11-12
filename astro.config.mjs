@@ -8,7 +8,7 @@ const collect_content_config = {
     rel_outdir:config.content_out,
     debug:true,
     tags:{
-        page:'page::([\\w-]+)'
+        page:'page::([\\w-.]+)'
     }
 }
 

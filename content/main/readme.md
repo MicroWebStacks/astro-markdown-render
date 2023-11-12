@@ -175,21 +175,20 @@ environment-image: spruit_sunrise_1k_HDR.hdr
 this is how you can reference a page
 
 ```markdown
-Link to page::svg-image
+Link to page::image-svg
 ```
 will produce this
 
-Link to page::svg-image
+Link to page::image-svg
 
 ## deep path reference
-Althoguh this referenced slug is from the file `folder\image-svg-2`, the slug `image-svg-2` is enough to reference it like this
+A slug is only unique within a content type, therefore in case of multiple files with the same folder name and title, it is possible to use the automatically generated unique identifier available in the `index.json`
 
 ```markdown
-Link to page::image-svg-2
+Link to page::trees.image-svg
 ```
 
-will link the correct url
+will link the correct url of the item in path `folder/trees/image-svg/readme.md`
 
-Link to page::image-svg-2
+Link to page::trees.image-svg
 
-Note the url for deep path separatro used is '.' as `folder.image-svg-2` but could also be '/' as `folder/image-svg-2`
