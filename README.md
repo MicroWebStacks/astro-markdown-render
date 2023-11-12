@@ -47,6 +47,8 @@ other
 * Cached diagrams rendering : all diagrams generations are cached on disk with a hash which prevents re fetching or rerunning the diagram generation. convenient for development and shift generation to become incremental on subsequent builds. Although the cache has no chance to fail by using the hash, old diagrams are not deleted though so cache has to be cleaned by the user.
 
 ## ideas
+* add support for D2 charts
+* run astro:asset with some presets using Image and Picture component on inline markdown images
 * use data-tables in markdown and xlsx tables https://github.com/MicroWebStacks/data-tables/tree/main
 * switching from diagram to code block should keep the top button at the same location and either shift what is down or keep the same vertical height between code and diagram to prevent any vertical shift.
 * issue: Biggest company in mermaid diagram is truncated by Kroki renderer, does not happen with mermaid renderer
