@@ -1,6 +1,6 @@
 import {existsSync,copyFileSync,mkdirSync,statSync} from 'fs'
 import {promises as fs} from 'fs';
-import {resolve,dirname,join,relative} from 'path'
+import {resolve,dirname,join,relative, basename, extname} from 'path'
 import {config} from '../../config.js'
 import { createHash } from 'crypto';
 
@@ -11,10 +11,20 @@ function isNewer(filepath,targetfile){
   return (t1>t2)
 }
 
+function hashed_filename(filename){
+  const dir = dirname(filename)
+  const name = basename(filename, extname(filename))
+  const hash = generateShortMD5(filename)
+  const ext = extname(filename)
+  const hashed_file = `${dir}/${name}-${hash}${ext}`
+  //console.log(`file: ${filename}`)
+  //console.log(`hashedfile: ${hashed_file}`)
+  return hashed_file
+}
+
 //Note 'imp*ort.me*ta.en*v.BA*SE_URL' only works from Astro component not from remark-rel-asset plugin
 function relAssetToUrl(relativepath,refFile){
   const refdir = join(config.rootdir,"content",dirname(refFile))
-    let newurl = relativepath
     const filepath = join(refdir,relativepath)
     console.log(`relAssetToUrl> filepath = ${filepath}`)
     if(existsSync(filepath)){
@@ -27,11 +37,13 @@ function relAssetToUrl(relativepath,refFile){
       const targetroot = join(config.rootdir,rel_outdir,"raw")
       const filerootrel = relative(config.rootdir,refdir)
       const targetpath = resolve(targetroot,filerootrel)
-      const targetfile = join(targetpath,relativepath)
+      const new_relativepath = config.hashed_assets?hashed_filename(relativepath):relativepath
+      const targetfile = join(targetpath,new_relativepath)
+      //add hash to target filename
       const targetdir = dirname(targetfile)
       //console.log(`copy from '${filepath}' to '${targetfile}'`)
-      const newpath = join("/raw/",filerootrel,relativepath)
-      newurl = newpath.replaceAll('\\','/')
+      const newpath = join("/raw/",filerootrel,new_relativepath)
+      const newurl = newpath.replaceAll('\\','/')
       if(!existsSync(targetdir)){
         mkdirSync(targetdir,{ recursive: true })
       }
@@ -45,9 +57,18 @@ function relAssetToUrl(relativepath,refFile){
       }else{
         console.log(`utils.js> * existing asset url = '${newurl}'`)
       }
+      if((config.copy_astro)&&(import.meta.env.MODE != "development")){
+        if([".png","jpg","jpeg"].includes(extname(new_relativepath))){
+          const file_base_name = basename(new_relativepath)
+          const target_astro_file = join(config.rootdir,config.outDir,"_astro",file_base_name)
+          copyFileSync(filepath,target_astro_file)
+          console.log(` ==> copied for astro ${target_astro_file}`)
+        }
+      }
+      return newurl
+    }else{
+      return relativepath
     }
-
-    return newurl
 }
 
 function assetToUrl(path,refFile){

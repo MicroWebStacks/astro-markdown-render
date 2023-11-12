@@ -16,6 +16,8 @@ const config = {
     content_out: "public",
     plantuml_server: "https://www.plantuml.com/plantuml/svg",
     kroki_server: "https://kroki.io",
+    hashed_assets:true,
+    copy_astro:true
 }
 
 console.log(config)
