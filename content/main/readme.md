@@ -24,7 +24,7 @@ for item in my_list:
 
 # Images
 ## Simple Image link
-Images are encapsulated inside a component that can open them in a Modal full view for Pan and zoom function and optimize them b e.g. generating webp from png
+Images are encapsulated inside a component that can open them in a Modal full view for Pan and zoom function
 
 ```markdown
 ![astro markdown render](./astro-markdown-render-small.png)
@@ -35,7 +35,7 @@ will generate this image
 ![astro markdown render](./astro-markdown-render-small.png)
 
 ## Advanced Image Directive
-In order to give more options to the optimizer, using the image directive allows to pass more arguments from markdown
+In order to give more options, using the image directive allows to pass more arguments from markdown
 
 ```markdown
 :image[]{src=./astro-markdown-render-small.png alt="Astro Markdown Render" height=200}
