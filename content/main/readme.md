@@ -170,3 +170,20 @@ title: Lantern
 poster: Lantern.webp
 environment-image: spruit_sunrise_1k_HDR.hdr
 ```
+# References
+
+this is how you can reference a page
+
+```markdown
+Link to page::svg-image
+```
+will produce this
+
+Link to page::svg-image
+
+Example for deep folder page, the slug is enough to link the full url
+
+Link to page::image-svg-2
+
+Note the url is defined as `folder.image-svg-2` but could also be `folder/image-svg-2`
+
