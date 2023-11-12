@@ -18,7 +18,7 @@ const config = {
     rootdir: __dirname,
     outDir: "dist",
     content: "content",
-    content_out: "public",
+    content_out: "dist",
     plantuml_server: "https://www.plantuml.com/plantuml/svg",
     kroki_server: "https://kroki.io",
     hashed_assets:false,
