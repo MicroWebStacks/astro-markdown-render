@@ -1,8 +1,9 @@
 {
-  "name": "@example/basics",
+  "name": "astro-markdown-render",
   "type": "module",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.1.1",
+  "description": "render remote md content with help of mdast",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -10,10 +11,15 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MicroWebStacks/astro-markdown-render.git"
+  },
   "dependencies": {
     "@google/model-viewer": "^3.3.0",
     "@svgdotjs/svg.js": "^3.2.0",
-    "astro": "^3.5.3",
+    "@astrojs/node": "^6.1.0",
+    "astro": "^3.6.4",
     "content-structure": "^0.6.4",
     "datatables.net-dt": "^1.13.7",
     "gray-matter": "^4.0.3",
@@ -26,5 +32,20 @@
     "remark": "^15.0.1",
     "shikiji": "^0.6.10",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
-  }
+  },
+  "keywords": [
+    "astro",
+    "markdown",
+    "remark",
+    "content",
+    "cms",
+    "structure",
+    "ast"
+  ],
+  "author": "wassfila",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MicroWebStacks/astro-markdown-render/issues"
+  },
+  "homepage": "https://github.com/MicroWebStacks/astro-markdown-render#readme"
 }

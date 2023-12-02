@@ -1,16 +1,15 @@
 import { defineConfig } from 'astro/config';
 import {config} from './config.js'
 import {collect_content} from './integrations/integration-content-structure.js'
-import netlify from '@astrojs/netlify/functions';
+import node from '@astrojs/node'
 
 let default_config = {
     outDir: config.outDir,
     output: config.output,
-    integrations: [collect_content(config.collect_content)]
-}
-
-if(config.output == "server"){
-    default_config.adapter = netlify()
+    adapter: node({
+      mode: 'standalone'
+    }),
+    //integrations: [collect_content(config.collect_content)]
 }
 
 export default defineConfig(default_config);

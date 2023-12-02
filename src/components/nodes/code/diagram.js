@@ -1,5 +1,5 @@
-import {config} from '@/config.js'
-import {exists, generateShortMD5, save_file} from '@/libs/utils'
+import {config} from '../../../../config.js'
+import {exists, generateShortMD5, save_file} from '../../../libs/utils.js'
 import {join} from 'path'
 import {promises as fs} from 'fs';
 
