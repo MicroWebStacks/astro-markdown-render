@@ -1,4 +1,4 @@
-import {set_config} from '../config.js'
+import {set_config} from './config.js'
 
 let render_config = {}
 

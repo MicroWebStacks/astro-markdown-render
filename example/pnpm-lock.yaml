@@ -6,14 +6,14 @@ settings:
 
 dependencies:
   astro:
-    specifier: ^3.6.4
+    specifier: ^3.5.3
     version: 3.6.4
   astro-markdown-render:
     specifier: file:..
     version: file:..(three@0.157.0)
   content-structure:
-    specifier: ^0.6.4
-    version: 0.6.4
+    specifier: ^0.6.5
+    version: 0.6.5
 
 packages:
 
@@ -1297,8 +1297,8 @@ packages:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
     dev: false
 
-  /content-structure@0.6.4:
-    resolution: {integrity: sha512-XUGnmlaL6aoegMKSBk2WsxDz0KciShBA92wLDZlKSTz3vB9kXGtHqUesB7ioTchlViuyX56gSiq80zpL6t7yrQ==}
+  /content-structure@0.6.5:
+    resolution: {integrity: sha512-sOqyEZNf2zrjdwBZ35HHdkZvGliMUYn6TMAUxI8FYMBMullEBSVt8GncATIz8EEwjVKEthbh+A8mGkQUkugA7Q==}
     dependencies:
       glob: 10.3.10
       gray-matter: 4.0.3
@@ -4561,7 +4561,7 @@ packages:
     resolution: {directory: .., type: directory}
     id: file:..
     name: astro-markdown-render
-    version: 0.2.0
+    version: 0.3.0
     dependencies:
       '@google/model-viewer': 3.3.0(three@0.157.0)
       '@svgdotjs/svg.js': 3.2.0

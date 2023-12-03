@@ -8,4 +8,4 @@ export{
     set_render_config
 }
 
-export { default as AstroMarkdown } from './src/components/AstroMarkdown.astro';
+export { default as AstroMarkdown } from './src/components/markdown/AstroMarkdown.astro';
