@@ -1,13 +1,14 @@
 ---
 import {promises as fs} from 'fs';
 import {join, dirname} from 'path'
+import { fileURLToPath } from 'url';
 
 export interface Props {
   filename: string;
 }
 const { filename } = Astro.props as Props;
 
-const iconsDir = join(dirname(new URL(import.meta.url).pathname),"../assets")
+const iconsDir = join(dirname(fileURLToPath(import.meta.url)),"../assets")
 const abs_file_path = join(iconsDir,`${filename}.svg`)
 const innerHTML = await fs.readFile(abs_file_path,'utf-8')
 ---
