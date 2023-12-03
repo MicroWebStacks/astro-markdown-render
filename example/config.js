@@ -17,6 +17,7 @@ if(import.meta.env.DEV){
 config.markdown_render = {
     rootdir:rootdir,
     content: config.content,
+    outDir: "dist",
     content_out:config.content_out,
     plantuml_server: "https://www.plantuml.com/plantuml/svg",
     kroki_server: "https://kroki.io"
@@ -25,7 +26,7 @@ config.markdown_render = {
 config.collect_content = {
     rootdir:rootdir,
     rel_contentdir:config.content,
-    rel_outdir:config.content_out,
+    rel_outdir:"public",//because integrations cannot persist on dist before start of build
     debug:false,
     tags:{
         page:'page::([\\w-.]+)'
