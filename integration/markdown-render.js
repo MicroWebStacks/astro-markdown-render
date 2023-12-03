@@ -1,9 +1,9 @@
-import {set_render_config} from 'astro-markdown-render'
+import {set_config} from '../config.js'
 
 let render_config = {}
 
 async function config_setup({ updateConfig, config, addPageExtension, command }) {
-	set_render_config(render_config)
+	set_config(render_config)
 }
 
 function markdown_render(options){

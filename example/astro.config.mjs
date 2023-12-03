@@ -1,10 +1,16 @@
+import {dirname} from 'path'
+import { fileURLToPath } from 'url';
 import { defineConfig } from 'astro/config';
 import {config} from './config.js'
 import {collect_content} from './integrations/integration-content-structure.js'
-import { markdown_render } from 'astro-markdown-render'
+import { markdown_render } from 'astro-markdown-render/integration/markdown-render.js'
 
 config.rootdir = dirname(fileURLToPath(import.meta.url));
 config.collect_content.rootdir = config.rootdir
+
+console.log("----------- config - astro markdown render - example -----------")
+console.log(config)
+console.log("----------- - - -----------")
 
 export default defineConfig({
   outDir: config.outDir,

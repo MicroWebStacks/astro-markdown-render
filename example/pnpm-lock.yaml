@@ -9,7 +9,7 @@ dependencies:
     specifier: ^3.6.4
     version: 3.6.4
   astro-markdown-render:
-    specifier: file:../
+    specifier: file:..
     version: file:..(three@0.157.0)
   content-structure:
     specifier: ^0.6.4

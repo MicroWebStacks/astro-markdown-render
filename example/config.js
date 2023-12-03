@@ -1,7 +1,5 @@
-const output = "static"
 
 let config = {
-    output:output,
     rootdir: "",
     outDir: "dist",
     content: "content",
@@ -19,13 +17,11 @@ config.collect_content = {
     rootdir:config.rootdir,
     rel_contentdir:config.content,
     rel_outdir:config.content_out,
-    debug:true,
+    debug:false,
     tags:{
         page:'page::([\\w-.]+)'
     }
 }
-
-console.log(config)
 
 export {
     config

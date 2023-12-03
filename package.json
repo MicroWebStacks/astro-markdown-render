@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.2.0",
   "description": "render remote md content with help of mdast",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -29,6 +29,9 @@
     "remark": "^15.0.1",
     "shikiji": "^0.6.10",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
+  },
+  "devDependencies": {
+    "astro": "^3.6.4"
   },
   "keywords": [
     "astro",

@@ -1,5 +1,4 @@
 
-import {set_config} from 'content-structure'
 
 let config = {}
 
