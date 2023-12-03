@@ -1,7 +1,7 @@
 {
   "name": "astro-markdown-render",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "render remote md content with help of mdast",
   "main": "./index.js",
   "scripts": {
