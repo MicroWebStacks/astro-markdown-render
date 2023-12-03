@@ -1,15 +1,15 @@
 ---
 import {promises as fs} from 'fs';
-import {config} from '../../config.js'
-import {join} from 'path'
+import {join, dirname} from 'path'
 
 export interface Props {
   filename: string;
 }
-
 const { filename } = Astro.props as Props;
-const abs_file_path = join(config.rootdir,`./src/assets/${filename}.svg`)
-const innerHTML = await fs.readFile(abs_file_path)
+
+const iconsDir = join(dirname(new URL(import.meta.url).pathname),"../assets")
+const abs_file_path = join(iconsDir,`${filename}.svg`)
+const innerHTML = await fs.readFile(abs_file_path,'utf-8')
 ---
 
 <Fragment set:html={innerHTML} />

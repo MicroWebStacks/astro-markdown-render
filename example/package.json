@@ -1,36 +1,27 @@
 {
-  "name": "astro-markdown-render",
+  "name": "astro-markdown-render-example",
   "type": "module",
-  "version": "0.2.0",
-  "description": "render remote md content with help of mdast",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "example how to render remote md content with Astro components",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "collect": "node scripts/collect.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MicroWebStacks/astro-markdown-render.git"
   },
   "dependencies": {
-    "@google/model-viewer": "^3.3.0",
-    "@svgdotjs/svg.js": "^3.2.0",
-    "datatables.net-dt": "^1.13.7",
-    "gray-matter": "^4.0.3",
-    "hast-util-to-html": "^9.0.0",
-    "js-yaml": "^4.1.0",
-    "marked": "^9.1.0",
-    "mdast-util-to-hast": "^13.0.2",
-    "panzoom": "^9.4.3",
-    "plantuml-encoder": "^1.4.0",
-    "remark": "^15.0.1",
-    "shikiji": "^0.6.10",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.0/xlsx-0.20.0.tgz"
+    "astro": "^3.6.4",
+    "content-structure": "^0.6.4",
+    "astro-markdown-render": "file:../"
   },
   "keywords": [
+    "example",
     "astro",
     "markdown",
     "remark",
