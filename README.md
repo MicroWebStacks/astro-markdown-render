@@ -13,7 +13,7 @@ The file `[...sid].astro` uses generated content from [content-structure](https:
 ```js
 ---
 import {getEntry} from 'content-structure'
-import AstroMarkdown from '@/components/renderers/AstroMarkdown.astro'
+import AstroMarkdown from '@/components/markdown/AstroMarkdown.astro'
 
 const {uid} = Astro.params;
 const entry = await getEntry({uid:uid})
