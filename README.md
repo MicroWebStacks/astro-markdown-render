@@ -1,3 +1,6 @@
+# Moved
+as I could not properly integrate this in a separate component, the development has shifted as part of astro-big-doc repo https://github.com/MicroWebStacks/astro-big-doc
+
 # Astro Markdown Render
 render remote markdown content using Astro components with the help of remark mdast
 
